@@ -263,15 +263,39 @@ function initMetano() {
     type: 'bar',
     data: {
       labels: ['Parco Sud', 'Abbazie', 'Niguarda', 'Baggio', 'Forze Armate', 'Maggiore'],
-      datasets: [{ label: 'Zonas', data: [44, 37, 30, 25, 20, 19], backgroundColor: '#60a5fa' }]
+      datasets: [{ 
+        label: 'Zonas sin gas', 
+        data: [44, 37, 30, 25, 20, 19], 
+        backgroundColor: '#60a5fa' 
+      }]
     },
-    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false }
+    options: { 
+      indexAxis: 'y', 
+      responsive: true, 
+      maintainAspectRatio: false,
+      scales: {
+        x: {
+          title: { display: true, text: 'Cantidad de zonas descarbonizadas', color: '#6b8f6b' },
+          grid: { color: 'rgba(255,255,255,0.05)' }
+        },
+        y: {
+          title: { display: true, text: 'Barrio (NIL)', color: '#6b8f6b' },
+          grid: { display: false }
+        }
+      }
+    }
   });
 
   new Chart(document.getElementById('chartMetanoRank'), {
     type: 'doughnut',
     data: {
-      labels: ['Mun. 7', 'Mun. 5', 'Mun. 4', 'Mun. 2', 'Otros'],
+      labels: [
+        'Mun. 7 (Oeste - Baggio)', 
+        'Mun. 5 (Sur - Vigentino)', 
+        'Mun. 4 (Sureste)', 
+        'Mun. 2 (Norte)', 
+        'Otros Distritos'
+      ],
       datasets: [{
         data: [153, 88, 35, 24, 66],
         backgroundColor: GREEN_PALETTE,
@@ -282,7 +306,14 @@ function initMetano() {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-        legend: { position: 'bottom', labels: { boxWidth: 12, padding: 15 } }
+        legend: { position: 'bottom', labels: { boxWidth: 12, padding: 15, color: '#6b8f6b' } },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return ` ${context.label}: ${context.raw} zonas`;
+            }
+          }
+        }
       }
     }
   });
