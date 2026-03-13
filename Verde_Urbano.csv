@@ -1,0 +1,337 @@
+﻿_id,Anno,Tipo gestione,Tipologia di Area (valore in MQ),Metri Quadri
+1,2011,Gestione Comunale,Aree naturali protette,35323
+2,2011,Gestione Comunale,Ville giardini e parchi,843972
+3,2011,Gestione Comunale,Parchi (giardini e ville) urbani,5189752
+4,2011,Gestione Comunale,Verde attrezzato,5577510
+5,2011,Gestione Comunale,Aree di arredo urbano,3260240
+6,2011,Gestione Comunale,Forestazione urbana,0
+7,2011,Gestione Comunale,Giardini scolastici comunali ,1359750
+8,2011,Gestione Comunale,Orti botanici,46430
+9,2011,Gestione Comunale,Orti urbani,2930
+10,2011,Gestione Comunale,Cimiteri,567270
+11,2011,Gestione Comunale,Aree all'aperto sportive e a servizio ludico ricreativo,26580
+12,2011,Gestione Comunale,Altre tipologie di verde urbano,375810
+13,2011,Gestione di altri enti pubblici,Aree naturali protette,0
+14,2011,Gestione di altri enti pubblici,Ville giardini e parchi,9919
+15,2011,Gestione di altri enti pubblici,Parchi (giardini e ville) urbani,3875174
+16,2011,Gestione di altri enti pubblici,Verde attrezzato,287300
+17,2011,Gestione di altri enti pubblici,Aree di arredo urbano,68870
+18,2011,Gestione di altri enti pubblici,Forestazione urbana,140310
+19,2011,Gestione di altri enti pubblici,Giardini scolastici comunali ,18570
+20,2011,Gestione di altri enti pubblici,Orti botanici,0
+21,2011,Gestione di altri enti pubblici,Orti urbani,34580
+22,2011,Gestione di altri enti pubblici,Cimiteri,0
+23,2011,Gestione di altri enti pubblici,Aree all'aperto sportive e a servizio ludico ricreativo,0
+24,2011,Gestione di altri enti pubblici,Altre tipologie di verde urbano,65300
+25,2012,Gestione Comunale,Aree naturali protette,35323
+26,2012,Gestione Comunale,Ville giardini e parchi,843972
+27,2012,Gestione Comunale,Parchi (giardini e ville) urbani,5205380
+28,2012,Gestione Comunale,Verde attrezzato,5606515
+29,2012,Gestione Comunale,Aree di arredo urbano,3426327
+30,2012,Gestione Comunale,Forestazione urbana,0
+31,2012,Gestione Comunale,Giardini scolastici comunali ,1369087
+32,2012,Gestione Comunale,Orti botanici,46488
+33,2012,Gestione Comunale,Orti urbani,2813
+34,2012,Gestione Comunale,Cimiteri,609297
+35,2012,Gestione Comunale,Aree all'aperto sportive e a servizio ludico ricreativo,7603
+36,2012,Gestione Comunale,Altre tipologie di verde urbano,375603
+37,2012,Gestione di altri enti pubblici,Aree naturali protette,0
+38,2012,Gestione di altri enti pubblici,Ville giardini e parchi,9919
+39,2012,Gestione di altri enti pubblici,Parchi (giardini e ville) urbani,4103997
+40,2012,Gestione di altri enti pubblici,Verde attrezzato,282632
+41,2012,Gestione di altri enti pubblici,Aree di arredo urbano,92885
+42,2012,Gestione di altri enti pubblici,Forestazione urbana,140313
+43,2012,Gestione di altri enti pubblici,Giardini scolastici comunali ,21071
+44,2012,Gestione di altri enti pubblici,Orti botanici,0
+45,2012,Gestione di altri enti pubblici,Orti urbani,36700
+46,2012,Gestione di altri enti pubblici,Cimiteri,0
+47,2012,Gestione di altri enti pubblici,Aree all'aperto sportive e a servizio ludico ricreativo,19098
+48,2012,Gestione di altri enti pubblici,Altre tipologie di verde urbano,67397
+49,2013,Gestione Comunale,Aree naturali protette,35323
+50,2013,Gestione Comunale,Ville giardini e parchi,845948
+51,2013,Gestione Comunale,Parchi (giardini e ville) urbani,5207138
+52,2013,Gestione Comunale,Verde attrezzato,5761923
+53,2013,Gestione Comunale,Aree di arredo urbano,3296585
+54,2013,Gestione Comunale,Forestazione urbana,0
+55,2013,Gestione Comunale,Giardini scolastici comunali ,1363808
+56,2013,Gestione Comunale,Orti botanici,45843
+57,2013,Gestione Comunale,Orti urbani,2893
+58,2013,Gestione Comunale,Cimiteri,619498
+59,2013,Gestione Comunale,Aree all'aperto sportive e a servizio ludico ricreativo,7599
+60,2013,Gestione Comunale,Altre tipologie di verde urbano,372829
+61,2013,Gestione di altri enti pubblici,Aree naturali protette,0
+62,2013,Gestione di altri enti pubblici,Ville giardini e parchi,9919
+63,2013,Gestione di altri enti pubblici,Parchi (giardini e ville) urbani,4088807
+64,2013,Gestione di altri enti pubblici,Verde attrezzato,384995
+65,2013,Gestione di altri enti pubblici,Aree di arredo urbano,125338
+66,2013,Gestione di altri enti pubblici,Forestazione urbana,140313
+67,2013,Gestione di altri enti pubblici,Giardini scolastici comunali ,20322
+68,2013,Gestione di altri enti pubblici,Orti botanici,0
+69,2013,Gestione di altri enti pubblici,Orti urbani,49946
+70,2013,Gestione di altri enti pubblici,Cimiteri,0
+71,2013,Gestione di altri enti pubblici,Aree all'aperto sportive e a servizio ludico ricreativo,18987
+72,2013,Gestione di altri enti pubblici,Altre tipologie di verde urbano,80082
+73,2014,Gestione Comunale,Aree naturali protette,35323
+74,2014,Gestione Comunale,Ville giardini e parchi,845952
+75,2014,Gestione Comunale,Parchi (giardini e ville) urbani,5221016
+76,2014,Gestione Comunale,Verde attrezzato,5912185
+77,2014,Gestione Comunale,Aree di arredo urbano,3283846
+78,2014,Gestione Comunale,Forestazione urbana,0
+79,2014,Gestione Comunale,Giardini scolastici comunali ,1371932
+80,2014,Gestione Comunale,Orti botanici,45853
+81,2014,Gestione Comunale,Orti urbani,4365
+82,2014,Gestione Comunale,Cimiteri,621271
+83,2014,Gestione Comunale,Aree all'aperto sportive e a servizio ludico ricreativo,132259
+84,2014,Gestione Comunale,Altre tipologie di verde urbano,367990
+85,2014,Gestione di altri enti pubblici,Aree naturali protette,0
+86,2014,Gestione di altri enti pubblici,Ville giardini e parchi,9919
+87,2014,Gestione di altri enti pubblici,Parchi (giardini e ville) urbani,4202438
+88,2014,Gestione di altri enti pubblici,Verde attrezzato,467663
+89,2014,Gestione di altri enti pubblici,Aree di arredo urbano,61784
+90,2014,Gestione di altri enti pubblici,Forestazione urbana,140313
+91,2014,Gestione di altri enti pubblici,Giardini scolastici comunali ,21203
+92,2014,Gestione di altri enti pubblici,Orti botanici,0
+93,2014,Gestione di altri enti pubblici,Orti urbani,59760
+94,2014,Gestione di altri enti pubblici,Cimiteri,0
+95,2014,Gestione di altri enti pubblici,Aree all'aperto sportive e a servizio ludico ricreativo,22491
+96,2014,Gestione di altri enti pubblici,Altre tipologie di verde urbano,98972
+97,2015,Gestione Comunale,Aree naturali protette,35323
+98,2015,Gestione Comunale,Ville giardini e parchi,846177
+99,2015,Gestione Comunale,Parchi (giardini e ville) urbani,5067537
+100,2015,Gestione Comunale,Verde attrezzato,6103718
+101,2015,Gestione Comunale,Aree di arredo urbano,3399865
+102,2015,Gestione Comunale,Forestazione urbana,0
+103,2015,Gestione Comunale,Giardini scolastici comunali ,1354212
+104,2015,Gestione Comunale,Orti botanici,46800
+105,2015,Gestione Comunale,Orti urbani,4417
+106,2015,Gestione Comunale,Cimiteri,659967
+107,2015,Gestione Comunale,Aree all'aperto sportive e a servizio ludico ricreativo,114968
+108,2015,Gestione Comunale,Altre tipologie di verde urbano,371165
+109,2015,Gestione di altri enti pubblici,Aree naturali protette,0
+110,2015,Gestione di altri enti pubblici,Ville giardini e parchi,9919
+111,2015,Gestione di altri enti pubblici,Parchi (giardini e ville) urbani,4495196
+112,2015,Gestione di altri enti pubblici,Verde attrezzato,536846
+113,2015,Gestione di altri enti pubblici,Aree di arredo urbano,146348
+114,2015,Gestione di altri enti pubblici,Forestazione urbana,140313
+115,2015,Gestione di altri enti pubblici,Giardini scolastici comunali ,24457
+116,2015,Gestione di altri enti pubblici,Orti botanici,0
+117,2015,Gestione di altri enti pubblici,Orti urbani,63951
+118,2015,Gestione di altri enti pubblici,Cimiteri,0
+119,2015,Gestione di altri enti pubblici,Aree all'aperto sportive e a servizio ludico ricreativo,40492
+120,2015,Gestione di altri enti pubblici,Altre tipologie di verde urbano,111672
+121,2016,Gestione Comunale,Aree naturali protette,35323
+122,2016,Gestione Comunale,Ville giardini e parchi,846177
+123,2016,Gestione Comunale,Parchi (giardini e ville) urbani,5426010
+124,2016,Gestione Comunale,Verde attrezzato,6167635
+125,2016,Gestione Comunale,Aree di arredo urbano,3432023
+126,2016,Gestione Comunale,Forestazione urbana,140313
+127,2016,Gestione Comunale,Giardini scolastici comunali ,1362604
+128,2016,Gestione Comunale,Orti botanici,46800
+129,2016,Gestione Comunale,Orti urbani,5508
+130,2016,Gestione Comunale,Cimiteri,666385
+131,2016,Gestione Comunale,Aree all'aperto sportive e a servizio ludico ricreativo,123199
+132,2016,Gestione Comunale,Altre tipologie di verde urbano,381971
+133,2016,Gestione di altri enti pubblici,Aree naturali protette,0
+134,2016,Gestione di altri enti pubblici,Ville giardini e parchi,9919
+135,2016,Gestione di altri enti pubblici,Parchi (giardini e ville) urbani,4509962
+136,2016,Gestione di altri enti pubblici,Verde attrezzato,611908
+137,2016,Gestione di altri enti pubblici,Aree di arredo urbano,159088
+138,2016,Gestione di altri enti pubblici,Forestazione urbana,0
+139,2016,Gestione di altri enti pubblici,Giardini scolastici comunali ,20075
+140,2016,Gestione di altri enti pubblici,Orti botanici,0
+141,2016,Gestione di altri enti pubblici,Orti urbani,68318
+142,2016,Gestione di altri enti pubblici,Cimiteri,0
+143,2016,Gestione di altri enti pubblici,Aree all'aperto sportive e a servizio ludico ricreativo,40492
+144,2016,Gestione di altri enti pubblici,Altre tipologie di verde urbano,106921
+145,2017,Gestione Comunale,Aree naturali protette,35323
+146,2017,Gestione Comunale,Ville giardini e parchi,857866
+147,2017,Gestione Comunale,Parchi (giardini e ville) urbani,5662193
+148,2017,Gestione Comunale,Verde attrezzato,6253655
+149,2017,Gestione Comunale,Aree di arredo urbano,3500812
+150,2017,Gestione Comunale,Forestazione urbana,140313
+151,2017,Gestione Comunale,Giardini scolastici comunali ,1353303
+152,2017,Gestione Comunale,Orti botanici,46934
+153,2017,Gestione Comunale,Orti urbani,5614
+154,2017,Gestione Comunale,Cimiteri,665670
+155,2017,Gestione Comunale,Aree all'aperto sportive e a servizio ludico ricreativo,112069
+156,2017,Gestione Comunale,Altre tipologie di verde urbano,374718
+157,2017,Gestione di altri enti pubblici,Aree naturali protette,0
+158,2017,Gestione di altri enti pubblici,Ville giardini e parchi,9919
+159,2017,Gestione di altri enti pubblici,Parchi (giardini e ville) urbani,4450767
+160,2017,Gestione di altri enti pubblici,Verde attrezzato,558650
+161,2017,Gestione di altri enti pubblici,Aree di arredo urbano,126528
+162,2017,Gestione di altri enti pubblici,Forestazione urbana,0
+163,2017,Gestione di altri enti pubblici,Giardini scolastici comunali ,29259
+164,2017,Gestione di altri enti pubblici,Orti botanici,0
+165,2017,Gestione di altri enti pubblici,Orti urbani,71971
+166,2017,Gestione di altri enti pubblici,Cimiteri,0
+167,2017,Gestione di altri enti pubblici,Aree all'aperto sportive e a servizio ludico ricreativo,54409
+168,2017,Gestione di altri enti pubblici,Altre tipologie di verde urbano,116879
+169,2018,Gestione Comunale,Aree naturali protette,35323
+170,2018,Gestione Comunale,Ville giardini e parchi,857868
+171,2018,Gestione Comunale,Parchi (giardini e ville) urbani,6096570
+172,2018,Gestione Comunale,Verde attrezzato,6534108
+173,2018,Gestione Comunale,Aree di arredo urbano,3422238
+174,2018,Gestione Comunale,Forestazione urbana,183551
+175,2018,Gestione Comunale,Giardini scolastici comunali ,1349067
+176,2018,Gestione Comunale,Orti botanici,45684
+177,2018,Gestione Comunale,Orti urbani,5614
+178,2018,Gestione Comunale,Cimiteri,665670
+179,2018,Gestione Comunale,Aree all'aperto sportive e a servizio ludico ricreativo,125772
+180,2018,Gestione Comunale,Altre tipologie di verde urbano,372116
+181,2018,Gestione di altri enti pubblici,Aree naturali protette,0
+182,2018,Gestione di altri enti pubblici,Ville giardini e parchi,9919
+183,2018,Gestione di altri enti pubblici,Parchi (giardini e ville) urbani,4217994
+184,2018,Gestione di altri enti pubblici,Verde attrezzato,570011
+185,2018,Gestione di altri enti pubblici,Aree di arredo urbano,88663
+186,2018,Gestione di altri enti pubblici,Forestazione urbana,0
+187,2018,Gestione di altri enti pubblici,Giardini scolastici comunali ,29229
+188,2018,Gestione di altri enti pubblici,Orti botanici,0
+189,2018,Gestione di altri enti pubblici,Orti urbani,71971
+190,2018,Gestione di altri enti pubblici,Cimiteri,0
+191,2018,Gestione di altri enti pubblici,Aree all'aperto sportive e a servizio ludico ricreativo,54409
+192,2018,Gestione di altri enti pubblici,Altre tipologie di verde urbano,118744
+193,2019,Gestione Comunale,Aree naturali protette,35323
+194,2019,Gestione Comunale,Ville giardini e parchi,857868
+195,2019,Gestione Comunale,Parchi (giardini e ville) urbani,6143523
+196,2019,Gestione Comunale,Verde attrezzato,6589932
+197,2019,Gestione Comunale,Aree di arredo urbano,3453984
+198,2019,Gestione Comunale,Forestazione urbana,212068
+199,2019,Gestione Comunale,Giardini scolastici comunali ,1357814
+200,2019,Gestione Comunale,Orti botanici,45684
+201,2019,Gestione Comunale,Orti urbani,5723
+202,2019,Gestione Comunale,Cimiteri,665670
+203,2019,Gestione Comunale,Aree all'aperto sportive e a servizio ludico ricreativo,125772
+204,2019,Gestione Comunale,Altre tipologie di verde urbano,372020
+205,2019,Gestione di altri enti pubblici,Aree naturali protette,0
+206,2019,Gestione di altri enti pubblici,Ville giardini e parchi,9919
+207,2019,Gestione di altri enti pubblici,Parchi (giardini e ville) urbani,4215107
+208,2019,Gestione di altri enti pubblici,Verde attrezzato,566188
+209,2019,Gestione di altri enti pubblici,Aree di arredo urbano,94315
+210,2019,Gestione di altri enti pubblici,Forestazione urbana,0
+211,2019,Gestione di altri enti pubblici,Giardini scolastici comunali ,29847
+212,2019,Gestione di altri enti pubblici,Orti botanici,0
+213,2019,Gestione di altri enti pubblici,Orti urbani,75119
+214,2019,Gestione di altri enti pubblici,Cimiteri,0
+215,2019,Gestione di altri enti pubblici,Aree all'aperto sportive e a servizio ludico ricreativo,54409
+216,2019,Gestione di altri enti pubblici,Altre tipologie di verde urbano,118744
+217,2020,Gestione Comunale,Aree naturali protette,35323
+218,2020,Gestione Comunale,Ville giardini e parchi,856223
+219,2020,Gestione Comunale,Parchi (giardini e ville) urbani,6202071
+220,2020,Gestione Comunale,Verde attrezzato,6618439
+221,2020,Gestione Comunale,Aree di arredo urbano,3466190
+222,2020,Gestione Comunale,Forestazione urbana,212068
+223,2020,Gestione Comunale,Giardini scolastici comunali ,1355945
+224,2020,Gestione Comunale,Orti botanici,45684
+225,2020,Gestione Comunale,Orti urbani,6731
+226,2020,Gestione Comunale,Cimiteri,665670
+227,2020,Gestione Comunale,Aree all'aperto sportive e a servizio ludico ricreativo,127138
+228,2020,Gestione Comunale,Altre tipologie di verde urbano,370448
+229,2020,Gestione di altri enti pubblici,Aree naturali protette,0
+230,2020,Gestione di altri enti pubblici,Ville giardini e parchi,9919
+231,2020,Gestione di altri enti pubblici,Parchi (giardini e ville) urbani,4204754
+232,2020,Gestione di altri enti pubblici,Verde attrezzato,562110
+233,2020,Gestione di altri enti pubblici,Aree di arredo urbano,94599
+234,2020,Gestione di altri enti pubblici,Forestazione urbana,0
+235,2020,Gestione di altri enti pubblici,Giardini scolastici comunali ,37649
+236,2020,Gestione di altri enti pubblici,Orti botanici,0
+237,2020,Gestione di altri enti pubblici,Orti urbani,74010
+238,2020,Gestione di altri enti pubblici,Cimiteri,0
+239,2020,Gestione di altri enti pubblici,Aree all'aperto sportive e a servizio ludico ricreativo,53044
+240,2020,Gestione di altri enti pubblici,Altre tipologie di verde urbano,120030
+241,2021,Gestione Comunale,Aree naturali protette,35323
+242,2021,Gestione Comunale,Ville giardini e parchi,856223
+243,2021,Gestione Comunale,Parchi (giardini e ville) urbani,6218317
+244,2021,Gestione Comunale,Verde attrezzato,6557155
+245,2021,Gestione Comunale,Aree di arredo urbano,3521383
+246,2021,Gestione Comunale,Forestazione urbana,235310
+247,2021,Gestione Comunale,Giardini scolastici comunali ,1352863
+248,2021,Gestione Comunale,Orti botanici,45684
+249,2021,Gestione Comunale,Orti urbani,6701
+250,2021,Gestione Comunale,Cimiteri,665670
+251,2021,Gestione Comunale,Aree all'aperto sportive e a servizio ludico ricreativo,124820
+252,2021,Gestione Comunale,Altre tipologie di verde urbano,369303
+253,2021,Gestione di altri enti pubblici,Aree naturali protette,0
+254,2021,Gestione di altri enti pubblici,Ville giardini e parchi,9919
+255,2021,Gestione di altri enti pubblici,Parchi (giardini e ville) urbani,4201874
+256,2021,Gestione di altri enti pubblici,Verde attrezzato,627066
+257,2021,Gestione di altri enti pubblici,Aree di arredo urbano,77530
+258,2021,Gestione di altri enti pubblici,Forestazione urbana,0
+259,2021,Gestione di altri enti pubblici,Giardini scolastici comunali ,37356
+260,2021,Gestione di altri enti pubblici,Orti botanici,0
+261,2021,Gestione di altri enti pubblici,Orti urbani,74882
+262,2021,Gestione di altri enti pubblici,Cimiteri,0
+263,2021,Gestione di altri enti pubblici,Aree all'aperto sportive e a servizio ludico ricreativo,54799
+264,2021,Gestione di altri enti pubblici,Altre tipologie di verde urbano,120030
+265,2022,Gestione Comunale,Aree naturali protette,35323
+266,2022,Gestione Comunale,Ville giardini e parchi,856223
+267,2022,Gestione Comunale,Parchi (giardini e ville) urbani,6118450
+268,2022,Gestione Comunale,Verde attrezzato,6794980
+269,2022,Gestione Comunale,Aree di arredo urbano,3581587
+270,2022,Gestione Comunale,Forestazione urbana,249198
+271,2022,Gestione Comunale,Giardini scolastici comunali ,1367065
+272,2022,Gestione Comunale,Orti botanici,45684
+273,2022,Gestione Comunale,Orti urbani,5665
+274,2022,Gestione Comunale,Cimiteri,665670
+275,2022,Gestione Comunale,Aree all'aperto sportive e a servizio ludico ricreativo,129292
+276,2022,Gestione Comunale,Altre tipologie di verde urbano,376623
+277,2022,Gestione di altri enti pubblici,Aree naturali protette,0
+278,2022,Gestione di altri enti pubblici,Ville giardini e parchi,24975
+279,2022,Gestione di altri enti pubblici,Parchi (giardini e ville) urbani,4419385
+280,2022,Gestione di altri enti pubblici,Verde attrezzato,602886
+281,2022,Gestione di altri enti pubblici,Aree di arredo urbano,86122
+282,2022,Gestione di altri enti pubblici,Forestazione urbana,0
+283,2022,Gestione di altri enti pubblici,Giardini scolastici comunali ,18708
+284,2022,Gestione di altri enti pubblici,Orti botanici,0
+285,2022,Gestione di altri enti pubblici,Orti urbani,75038
+286,2022,Gestione di altri enti pubblici,Cimiteri,0
+287,2022,Gestione di altri enti pubblici,Aree all'aperto sportive e a servizio ludico ricreativo,54799
+288,2022,Gestione di altri enti pubblici,Altre tipologie di verde urbano,119171
+289,2023,Gestione Comunale,Aree naturali protette,35323
+290,2023,Gestione Comunale,Ville giardini e parchi,856220
+291,2023,Gestione Comunale,Parchi (giardini e ville) urbani,6152977
+292,2023,Gestione Comunale,Verde attrezzato,6832942
+293,2023,Gestione Comunale,Aree di arredo urbano,3590020
+294,2023,Gestione Comunale,Forestazione urbana,249198
+295,2023,Gestione Comunale,Giardini scolastici comunali ,1365989
+296,2023,Gestione Comunale,Orti botanici,45683
+297,2023,Gestione Comunale,Orti urbani,5665
+298,2023,Gestione Comunale,Cimiteri,665670
+299,2023,Gestione Comunale,Aree all'aperto sportive e a servizio ludico ricreativo,85121
+300,2023,Gestione Comunale,Altre tipologie di verde urbano,344621
+301,2023,Gestione di altri enti pubblici,Aree naturali protette,0
+302,2023,Gestione di altri enti pubblici,Ville giardini e parchi,24975
+303,2023,Gestione di altri enti pubblici,Parchi (giardini e ville) urbani,4400262
+304,2023,Gestione di altri enti pubblici,Verde attrezzato,603049
+305,2023,Gestione di altri enti pubblici,Aree di arredo urbano,97273
+306,2023,Gestione di altri enti pubblici,Forestazione urbana,0
+307,2023,Gestione di altri enti pubblici,Giardini scolastici comunali ,37571
+308,2023,Gestione di altri enti pubblici,Orti botanici,0
+309,2023,Gestione di altri enti pubblici,Orti urbani,76253
+310,2023,Gestione di altri enti pubblici,Cimiteri,0
+311,2023,Gestione di altri enti pubblici,Aree all'aperto sportive e a servizio ludico ricreativo,98539
+312,2023,Gestione di altri enti pubblici,Altre tipologie di verde urbano,122853
+313,2024,Gestione Comunale,Aree naturali protette,
+314,2024,Gestione Comunale,Ville giardini e parchi,859691
+315,2024,Gestione Comunale,Parchi (giardini e ville) urbani,6112851
+316,2024,Gestione Comunale,Verde attrezzato,7096895
+317,2024,Gestione Comunale,Aree di arredo urbano,3623902
+318,2024,Gestione Comunale,Forestazione urbana,214492
+319,2024,Gestione Comunale,Giardini scolastici comunali ,1364275
+320,2024,Gestione Comunale,Orti botanici,46934
+321,2024,Gestione Comunale,Orti urbani,
+322,2024,Gestione Comunale,Cimiteri,665670
+323,2024,Gestione Comunale,Aree all'aperto sportive e a servizio ludico ricreativo,89948
+324,2024,Gestione Comunale,Altre tipologie di verde urbano,
+325,2024,Gestione di altri enti pubblici,Aree naturali protette,
+326,2024,Gestione di altri enti pubblici,Ville giardini e parchi,24975
+327,2024,Gestione di altri enti pubblici,Parchi (giardini e ville) urbani,4355842
+328,2024,Gestione di altri enti pubblici,Verde attrezzato,626632
+329,2024,Gestione di altri enti pubblici,Aree di arredo urbano,107371
+330,2024,Gestione di altri enti pubblici,Forestazione urbana,34705
+331,2024,Gestione di altri enti pubblici,Giardini scolastici comunali ,39981
+332,2024,Gestione di altri enti pubblici,Orti botanici,0
+333,2024,Gestione di altri enti pubblici,Orti urbani,
+334,2024,Gestione di altri enti pubblici,Cimiteri,0
+335,2024,Gestione di altri enti pubblici,Aree all'aperto sportive e a servizio ludico ricreativo,98539
+336,2024,Gestione di altri enti pubblici,Altre tipologie di verde urbano,
