@@ -102,16 +102,20 @@
             <div class="section-intro">
                 <span class="insight-tag">Capítulo 5</span>
                 <h2>Transición a <em>Cero Gas</em></h2>
-                <p>Distribución geográfica de las zonas que ya no dependen del suministro de gas metano.</p>
+                <p>Distribución geográfica y densidad de las zonas que ya no dependen del suministro de gas metano.</p>
             </div>
             <div class="grid-2">
                 <div class="card">
-                    <div class="card-title">Distribución Geo-espacial por Municipio</div>
+                    <div class="card-title">Distribución por Municipio</div>
                     <div class="chart-wrap-tall"><canvas id="chartMetanoGeo"></canvas></div>
                 </div>
                 <div class="card">
-                    <div class="card-title">Top Barrios sin Metano</div>
-                    <div class="chart-wrap-tall"><canvas id="chartMetanoMunicipio"></canvas></div>
+                    <div class="card-title">Densidad de Zonas (Mapa de Calor)</div>
+                    <div class="chart-wrap-tall"><canvas id="chartMetanoDensity"></canvas></div>
+                </div>
+                <div class="card span-2">
+                    <div class="card-title">Barrios (NIL) con más transiciones</div>
+                    <div class="chart-wrap"><canvas id="chartMetanoMunicipio"></canvas></div>
                 </div>
             </div>
         </section>
@@ -120,13 +124,20 @@
             <div class="section-intro">
                 <span class="insight-tag">Capítulo 6</span>
                 <h2>Análisis <em>Cruzado</em></h2>
-                <p>Relaciones profundas entre variables climáticas y factores de sostenibilidad.</p>
+                <p>Relaciones entre variables climáticas. La matriz inferior permite identificar dependencias directas.</p>
             </div>
             <div class="card">
-                <div class="card-title">Matriz de Correlación de Pearson</div>
-                <div id="correlationLabels" style="display:flex; justify-content:space-around; margin-bottom:10px; font-size:10px; color:var(--muted)"></div>
-                <div id="correlationMatrix" class="corr-grid"></div>
-                <div class="card-unit" style="margin-top:16px">Los valores cercanos a 1.0 indican una correlación positiva fuerte (ej. Temperatura vs Noches Tropicales).</div>
+                <div class="card-title">Matriz de Correlación (Pearson)</div>
+                <div class="matrix-container" style="display: flex;">
+                    <div id="yLabels" style="display: flex; flex-direction: column; justify-content: space-around; padding-right: 15px; font-size: 11px; color: var(--muted); text-align: right;"></div>
+                    <div style="flex: 1;">
+                        <div id="xLabels" style="display: flex; justify-content: space-around; margin-bottom: 10px; font-size: 11px; color: var(--muted); text-align: center;"></div>
+                        <div id="correlationMatrix" class="corr-grid"></div>
+                    </div>
+                </div>
+                <div class="card-unit" style="margin-top:20px; border-top: 1px solid var(--border); padding-top: 15px;">
+                    Valores próximos a <strong>1.0</strong> indican correlación fuerte positiva (ej. Temp vs Calor).
+                </div>
             </div>
             
             <div class="grid-2" style="margin-top:32px">

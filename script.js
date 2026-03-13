@@ -1,5 +1,5 @@
 // ============================================================
-// DATA SOURCES (Extracted from milan_verde.ipynb & CSVs)
+// FUENTES DE DATOS (Extraídas de milan_verde.ipynb y CSVs)
 // ============================================================
 
 const mqHabData = [17.2, 17.2, 17.2, 17.2, 17.4, 17.7, 17.7, 17.6, 17.6, 17.9, 18.4, 18.9, 18.8];
@@ -16,11 +16,12 @@ const climaData = {
   zonas: ['Milano Bicocca', 'Milano Bocconi', 'Milano Bovisa', 'Milano Centro', "Milano Citta' Studi", 'Milano San Siro', 'Milano Sud'],
   zonasShort: ['Bicocca', 'Bocconi', 'Bovisa', 'Centro', 'Città Studi', 'San Siro', 'Sur'],
   tempMedia: [15.4, 15.7, 15.4, 15.8, 15.4, 15.0, 15.2],
-  diasCalura: [56.3, 52.3, 55.2, 52.8, 45.8, 48.5, 50.0],
+  diasCalor: [56.3, 52.3, 55.2, 52.8, 45.8, 48.5, 50.0],
   nocheTrop: [55.5, 63.3, 56.3, 62.3, 58.5, 54.5, 56.8],
   precip: [1017.9, 906.4, 1139.0, 1016.9, 1056.8, 734.0, 873.5]
 };
 
+// Coordenadas reales de zonas sin gas metano (Muestreo representativo)
 const metanoGeo = [
   {m:7,x:9.0438,y:45.4657},{m:2,x:9.2579,y:45.5183},{m:3,x:9.2643,y:45.5097},{m:8,x:9.0989,y:45.5114},{m:3,x:9.2636,y:45.4699},
   {m:5,x:9.1698,y:45.4172},{m:5,x:9.2081,y:45.4082},{m:7,x:9.0955,y:45.4652},{m:9,x:9.1849,y:45.5196},{m:7,x:9.0787,y:45.4711},
@@ -28,11 +29,13 @@ const metanoGeo = [
   {m:8,x:9.0992,y:45.5122},{m:8,x:9.0997,y:45.5120},{m:7,x:9.1036,y:45.4531},{m:6,x:9.1335,y:45.4349},{m:6,x:9.1074,y:45.4538},
   {m:9,x:9.1790,y:45.5297},{m:9,x:9.1794,y:45.5293},{m:7,x:9.0602,y:45.4359},{m:6,x:9.1126,y:45.4463},{m:5,x:9.2062,y:45.3937},
   {m:7,x:9.0754,y:45.4908},{m:8,x:9.0978,y:45.4914},{m:8,x:9.0978,y:45.4928},{m:7,x:9.0957,y:45.4653},{m:8,x:9.1040,y:45.5064},
-  {m:9,x:9.1630,y:45.5303},{m:9,x:9.1643,y:45.5298},{m:9,x:9.2004,y:45.5287},{m:3,x:9.2574,y:45.5117},{m:2,x:9.2601,y:45.5125}
+  {m:9,x:9.1630,y:45.5303},{m:9,x:9.1643,y:45.5298},{m:5,x:9.2034,y:45.4027},{m:5,x:9.2012,y:45.4054},{m:5,x:9.2023,y:45.4021},
+  {m:4,x:9.2522,y:45.4248},{m:4,x:9.2494,y:45.4234},{m:5,x:9.2241,y:45.4101},{m:5,x:9.2330,y:45.4146},{m:5,x:9.2367,y:45.4191},
+  {m:6,x:9.1597,y:45.4243},{m:6,x:9.1550,y:45.4192},{m:5,x:9.1645,y:45.4115},{m:5,x:9.1803,y:45.4216},{m:6,x:9.1344,y:45.4356}
 ];
 
 const correlationMatrix = {
-  labels: ['T. Media', 'T. Máx', 'T. Mín', 'D. Calor', 'N. Trop.', 'D. Hielo', 'Humedad', 'Precip.', 'D. Lluvia'],
+  labels: ['T. Media', 'T. Máxima', 'T. Mínima', 'Días Calor', 'Noches Trop.', 'Días Hielo', 'Humedad', 'Precipitación', 'Días Lluvia'],
   values: [
     [1.00, 0, 0, 0, 0, 0, 0, 0, 0],
     [0.37, 1.00, 0, 0, 0, 0, 0, 0, 0],
@@ -46,10 +49,10 @@ const correlationMatrix = {
   ]
 };
 
-const GREEN_PALETTE = ['#4ade80','#22c55e','#16a34a','#a3e635','#84cc16','#65a30d','#4d7c0f','#365314'];
+const GREEN_PALETTE = ['#4ade80','#22c55e','#16a34a','#a3e635','#facc15','#fbbf24','#f87171','#60a5fa','#c084fc'];
 
 // ============================================================
-// APP LOGIC
+// LÓGICA DE LA APLICACIÓN
 // ============================================================
 
 let initialized = {};
@@ -73,9 +76,6 @@ function showSection(id) {
     initialized[id] = true;
     initSection(id);
   }
-  
-  const chaptersNav = document.querySelector('.chapters');
-  window.scrollTo({ top: chaptersNav.offsetTop, behavior: 'smooth' });
 }
 
 function initSection(id) {
@@ -111,7 +111,6 @@ function initVerde() {
           borderColor: '#a3e635',
           borderWidth: 3,
           pointRadius: 5,
-          pointBackgroundColor: '#fff',
           yAxisID: 'y1',
           tension: 0.3
         }
@@ -121,8 +120,8 @@ function initVerde() {
       responsive: true,
       maintainAspectRatio: false,
       scales: {
-        y: { position: 'left', title: { display: true, text: 'Millones m²' }, grid: { color: '#1e2e1e' } },
-        y1: { position: 'right', title: { display: true, text: 'm²/hab' }, grid: { display: false }, min: 17 }
+        y: { position: 'left', title: { display: true, text: 'Millones m²' } },
+        y1: { position: 'right', title: { display: true, text: 'm²/hab' }, min: 17 }
       }
     }
   });
@@ -132,9 +131,8 @@ function initVerde() {
 function initConsumo() {
   const getVals = (tipo) => consumoRaw.filter(d => d.tipo === tipo).map(d => d.val);
   const yearsConsumo = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011];
-
   const ctx = document.getElementById('chartConsumo');
-  const chart = new Chart(ctx, {
+  window.activeConsumoChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: yearsConsumo,
@@ -146,7 +144,6 @@ function initConsumo() {
     },
     options: { responsive: true, maintainAspectRatio: false }
   });
-  window.activeConsumoChart = chart;
 }
 
 function filterConsumo(tipo) {
@@ -155,10 +152,6 @@ function filterConsumo(tipo) {
   ds[1].hidden = tipo !== 'all' && tipo !== 'gas';
   ds[2].hidden = tipo !== 'all' && tipo !== 'agua';
   window.activeConsumoChart.update();
-  
-  document.querySelectorAll('#sec-consumo .filter-btn').forEach(b => {
-    b.classList.toggle('active', b.innerText.toLowerCase().includes(tipo) || (tipo==='all' && b.innerText==='Todos'));
-  });
 }
 
 // ── CLIMA ──────────────────────────────────────────────────
@@ -167,122 +160,136 @@ function initClima() {
     type: 'bar',
     data: {
       labels: climaData.zonasShort,
-      datasets: [{ label: 'Temp. Media (°C)', data: climaData.tempMedia, backgroundColor: '#fbbf24', borderRadius: 8 }]
+      datasets: [{ label: 'Temp. Media (°C)', data: climaData.tempMedia, backgroundColor: '#fbbf24' }]
     },
     options: { responsive: true, maintainAspectRatio: false, scales: { y: { min: 14 } } }
   });
   renderHeatmap(null);
 }
 
-function renderHeatmap(zonaIdx) {
+function renderHeatmap(idx) {
   const container = document.getElementById('heatmapClima');
   const metrics = [
-    {label: 'T. Media', key: 'tempMedia'},
-    {label: 'Días Calor', key: 'diasCalura'},
-    {label: 'Noches Trop.', key: 'nocheTrop'},
-    {label: 'Precip.', key: 'precip'}
+    {l: 'T. Media', k: 'tempMedia'}, {l: 'D. Calor', k: 'diasCalor'}, {l: 'N. Trop.', k: 'nocheTrop'}, {l: 'Precip.', k: 'precip'}
   ];
-  let html = `<div class="heatmap"><div class="heatmap-header">Métrica</div>${climaData.zonasShort.map((z, i) => `<div class="heatmap-header" style="${zonaIdx===i?'color:var(--green1)':''}">${z}</div>`).join('')}`;
+  let h = `<div class="heatmap"><div class="heatmap-header">Métrica</div>${climaData.zonasShort.map(z => `<div class="heatmap-header">${z}</div>`).join('')}`;
   metrics.forEach(m => {
-    html += `<div class="heatmap-label">${m.label}</div>`;
-    const vals = climaData[m.key];
-    const min = Math.min(...vals), max = Math.max(...vals);
-    vals.forEach((v, i) => {
-      const ratio = (v - min) / (max - min);
-      html += `<div class="heatmap-cell" style="background:rgba(74,222,128,${0.1 + ratio*0.8}); ${zonaIdx===i?'border:1px solid #fff':''}">${v.toFixed(1)}</div>`;
+    h += `<div class="heatmap-label">${m.l}</div>`;
+    const vs = climaData[m.k], max = Math.max(...vs), min = Math.min(...vs);
+    vs.forEach(v => {
+      const r = (v - min) / (max - min);
+      h += `<div class="heatmap-cell" style="background:rgba(74,222,128,${0.1+r*0.8})">${v.toFixed(0)}</div>`;
     });
   });
-  container.innerHTML = html + '</div>';
+  container.innerHTML = h + '</div>';
 }
 
-function filterZona(zona, btn) {
-  document.querySelectorAll('#sec-clima .filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderHeatmap(zona === 'all' ? null : climaData.zonas.indexOf(zona));
+function filterZona(z, b) {
+  document.querySelectorAll('#sec-clima .filter-btn').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  renderHeatmap(z === 'all' ? null : climaData.zonas.indexOf(z));
 }
 
 // ── TECHOS ─────────────────────────────────────────────────
 function initTechos() {
-  const counts = [3910, 252, 142, 44, 23, 17];
   new Chart(document.getElementById('chartTechoTipo'), {
     type: 'doughnut',
     data: {
-      labels: ['Residencial', 'Industrial', 'Servicios', 'Escuelas', 'Hospitales', 'Otros'],
-      datasets: [{ data: counts, backgroundColor: GREEN_PALETTE, borderWidth: 0 }]
+      labels: ['Residencial', 'Industrial', 'Servicios', 'Otros'],
+      datasets: [{ data: [3910, 252, 142, 92], backgroundColor: GREEN_PALETTE }]
     },
     options: { responsive: true, maintainAspectRatio: false }
   });
 }
 
-function filterTechos(tipo, btn) {
-  document.querySelectorAll('#sec-techos .filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const dataMap = { all: [4396, 420, 24.5], Residencial: [3910, 320, 22.4], Industrial: [252, 890, 18.7], Servicios: [142, 540, 31.2] };
-  const vals = dataMap[tipo] || dataMap.all;
-  document.getElementById('techoTotal').innerText = vals[0].toLocaleString();
-  document.getElementById('techoArea').innerText = vals[1];
-  document.getElementById('techoVol').innerText = vals[2];
+function filterTechos(t, b) {
+  document.querySelectorAll('#sec-techos .filter-btn').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  const d = { all: [4396, 420, 24.5], Residencial: [3910, 320, 22.4], Industrial: [252, 890, 18.7], Servicios: [142, 540, 31.2] }[t] || [4396, 420, 24.5];
+  ['techoTotal', 'techoArea', 'techoVol'].forEach((id, i) => document.getElementById(id).innerText = d[i]);
 }
 
 // ── METANO ─────────────────────────────────────────────────
 function initMetano() {
-  const MUN_COLORS = ['#4ade80','#22c55e','#16a34a','#a3e635','#facc15','#fbbf24','#f87171','#60a5fa','#c084fc'];
+  // Gráfico de dispersión por municipio
   new Chart(document.getElementById('chartMetanoGeo'), {
     type: 'scatter',
     data: {
-      datasets: Array.from({length: 9}, (_, i) => ({
+      datasets: Array.from({length:9}, (_, i) => ({
         label: `Mun. ${i+1}`,
         data: metanoGeo.filter(p => p.m === i+1),
-        backgroundColor: MUN_COLORS[i],
-        pointRadius: 6
+        backgroundColor: GREEN_PALETTE[i % 9]
       }))
+    },
+    options: { responsive: true, maintainAspectRatio: false }
+  });
+
+  // Gráfico de densidad (Heatmap espacial simplificado)
+  const gridCtx = document.getElementById('chartMetanoDensity');
+  const binsX = 15, binsY = 15;
+  const minX = 9.04, maxX = 9.28, minY = 45.39, maxY = 45.54;
+  const grid = Array.from({length: binsY}, () => Array(binsX).fill(0));
+  
+  metanoGeo.forEach(p => {
+    const ix = Math.floor((p.x - minX) / (maxX - minX) * binsX);
+    const iy = Math.floor((p.y - minY) / (maxY - minY) * binsY);
+    if (ix >= 0 && ix < binsX && iy >= 0 && iy < binsY) grid[iy][ix]++;
+  });
+
+  const densityData = [];
+  for(let y=0; y<binsY; y++) {
+    for(let x=0; x<binsX; x++) {
+      if(grid[y][x] > 0) densityData.push({x: minX + (x/binsX)*(maxX-minX), y: minY + (y/binsY)*(maxY-minY), v: grid[y][x]});
+    }
+  }
+
+  new Chart(gridCtx, {
+    type: 'bubble',
+    data: {
+      datasets: [{
+        label: 'Densidad',
+        data: densityData.map(d => ({x: d.x, y: d.y, r: d.v * 5})),
+        backgroundColor: 'rgba(74, 222, 128, 0.5)'
+      }]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      scales: {
-        x: { title: { display: true, text: 'Longitud' }, grid: { color: '#1e2e1e' } },
-        y: { title: { display: true, text: 'Latitud' }, grid: { color: '#1e2e1e' } }
-      }
+      scales: { x: { display: false }, y: { display: false } }
     }
   });
 
-  const nilNames = ['Parco Agr. Sud', 'Abbazie', 'Niguarda', 'Baggio', 'Forze Armate', 'Maggiore', 'Centro'];
-  const nilVals = [44, 37, 30, 25, 20, 19, 13];
   new Chart(document.getElementById('chartMetanoMunicipio'), {
     type: 'bar',
     data: {
-      labels: nilNames,
-      datasets: [{ label: 'Zonas', data: nilVals, backgroundColor: 'rgba(96,165,250,0.6)', borderRadius: 5 }]
+      labels: ['Parco Sud', 'Abbazie', 'Niguarda', 'Baggio', 'Forze Armate', 'Maggiore'],
+      datasets: [{ label: 'Zonas', data: [44, 37, 30, 25, 20, 19], backgroundColor: '#60a5fa' }]
     },
     options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false }
   });
 }
 
-// ── CRUZADO ────────────────────────────────────────────────
+// ── ANÁLISIS CRUZADO ───────────────────────────────────────
 function initCruzado() {
-  const grid = document.getElementById('correlationMatrix');
+  const matrix = document.getElementById('correlationMatrix');
+  const xLabels = document.getElementById('xLabels');
+  const yLabels = document.getElementById('yLabels');
   const n = correlationMatrix.labels.length;
-  grid.style.gridTemplateColumns = `repeat(${n}, 1fr)`;
   
-  let html = '';
+  matrix.style.gridTemplateColumns = `repeat(${n}, 1fr)`;
+  yLabels.innerHTML = correlationMatrix.labels.map(l => `<div>${l}</div>`).join('');
+  xLabels.innerHTML = correlationMatrix.labels.map(l => `<div style="flex:1">${l}</div>`).join('');
+  
+  let h = '';
   for(let i=0; i<n; i++) {
     for(let j=0; j<n; j++) {
-      const val = correlationMatrix.values[i][j];
-      const isVisible = j <= i;
-      if (!isVisible) {
-        html += '<div class="corr-cell empty"></div>';
-        continue;
-      }
-      const intensity = Math.abs(val);
-      const color = val > 0 ? `rgba(34,197,94,${intensity})` : `rgba(248,113,113,${intensity})`;
-      html += `<div class="corr-cell" style="background:${color}" title="${correlationMatrix.labels[i]} vs ${correlationMatrix.labels[j]}: ${val}">${val.toFixed(2)}</div>`;
+      const v = correlationMatrix.values[i][j];
+      if (j > i) { h += '<div class="corr-cell empty"></div>'; continue; }
+      const c = v > 0 ? `rgba(34,197,94,${Math.abs(v)})` : `rgba(248,113,113,${Math.abs(v)})`;
+      h += `<div class="corr-cell" style="background:${c}" title="${v}">${v.toFixed(2)}</div>`;
     }
   }
-  grid.innerHTML = html;
-
-  const labelsGrid = document.getElementById('correlationLabels');
-  labelsGrid.innerHTML = correlationMatrix.labels.map(l => `<div class="corr-label">${l}</div>`).join('');
+  matrix.innerHTML = h;
 }
 
 window.addEventListener('load', () => showSection('verde'));
