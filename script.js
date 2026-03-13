@@ -267,6 +267,25 @@ function initMetano() {
     },
     options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false }
   });
+
+  new Chart(document.getElementById('chartMetanoRank'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Mun. 7', 'Mun. 5', 'Mun. 4', 'Mun. 2', 'Otros'],
+      datasets: [{
+        data: [153, 88, 35, 24, 66],
+        backgroundColor: GREEN_PALETTE,
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { boxWidth: 12, padding: 15 } }
+      }
+    }
+  });
 }
 
 // ── ANÁLISIS CRUZADO ───────────────────────────────────────
