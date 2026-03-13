@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isla de Calor | Análisis Urbano Global</title>
+    <meta name="description" content="Análisis y mitigación del efecto de isla de calor urbana. Visualización de datos y soluciones sostenibles para ciudades del futuro.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">ThermalMind</div>
+        <div class="nav-links">
+            <a href="#about">Fenómeno</a>
+            <a href="#solutions">Soluciones</a>
+            <a href="#github">GitHub</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <img src="hero_heat_island.png" alt="Thermal city view" class="hero-img">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>ISLA DE CALOR</h1>
+            <p>Monitoreo en tiempo real y estrategias de enfriamiento pasivo para metrópolis en calentamiento.</p>
+            <button class="btn btn-primary" onclick="window.location.hash='#about'">Explorar Datos</button>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2 class="section-title">El Desafío Urbano</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Absorción Térmica</h3>
+                <p>El hormigón y el asfalto retienen el calor solar, elevando las temperaturas nocturnas hasta 12°C más que en áreas rurales.</p>
+            </div>
+            <div class="card">
+                <h3>Impacto en la Salud</h3>
+                <p>El aumento del estrés térmico incrementa la mortalidad y los problemas respiratorios en poblaciones vulnerables.</p>
+            </div>
+            <div class="card">
+                <h3>Consumo Energético</h3>
+                <p>La demanda de aire acondicionado se dispara, creando un ciclo de retroalimentación de emisiones de calor y CO2.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" style="background: rgba(255, 77, 0, 0.02);">
+        <h2 class="section-title">Mitigación Estratégica</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Infraestructura Verde</h3>
+                <p>Techos verdes y corredores biológicos para aumentar la evapotranspiración y reducir sombras térmicas.</p>
+            </div>
+            <div class="card">
+                <h3>Pavimentos Fríos</h3>
+                <p>Uso de materiales reflectantes (cool pavements) para devolver la radiación solar al espacio.</p>
+            </div>
+            <div class="card">
+                <h3>Diseño Bioclimático</h3>
+                <p>Planificación de flujos de viento urbano y orientación de estructuras para maximizar la ventilación natural.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 ThermalMind Project. Conectando ciudades con la sostenibilidad.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
