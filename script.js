@@ -310,7 +310,7 @@ function initMetano() {
         tooltip: {
           callbacks: {
             label: function(context) {
-              return ` ${context.label}: ${context.raw} zonas`;
+              return ` ${context.label}: ${context.raw} zonas descarbonizadas`;
             }
           }
         }
