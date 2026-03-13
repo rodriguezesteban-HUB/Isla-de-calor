@@ -5,221 +5,149 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Milán Verde — Dashboard Ambiental Premium</title>
     <meta name="description" content="Análisis exhaustivo del verde urbano, consumo energético y clima en Milán. Storytelling basado en datos reales.">
-    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- HERO SECTION -->
     <header class="hero">
-        <span class="hero-label">📍 Milán, Italia — Reporte 2024</span>
+        <span class="hero-label">📍 Milán, Italia — Reporte de Sostenibilidad</span>
         <h1>Milán <span>Verde</span><br>& Sostenible</h1>
-        <p class="hero-sub">Explora la transformación urbana de Milán a través de datos: techos verdes, eficiencia de recursos y mitigación del clima extremo.</p>
+        <p class="hero-sub">Un viaje de datos sobre la transformación urbana de Milán: desde la expansión del verde hasta la descarbonización de la red.</p>
         
         <div class="hero-stats">
-            <div class="hero-stat">
-                <div class="val">18.9</div>
-                <div class="lbl">m² verde / hab.</div>
-            </div>
-            <div class="hero-stat">
-                <div class="val">4.3k</div>
-                <div class="lbl">Techos verdes</div>
-            </div>
-            <div class="hero-stat">
-                <div class="val">−26%</div>
-                <div class="lbl">Consumo de Gas</div>
-            </div>
-            <div class="hero-stat">
-                <div class="val">366</div>
-                <div class="lbl">Zonas sin metano</div>
-            </div>
+            <div class="hero-stat"><div class="val">18.9</div><div class="lbl">m² verde / hab.</div></div>
+            <div class="hero-stat"><div class="val">25.7M</div><div class="lbl">Total m² Verde</div></div>
+            <div class="hero-stat"><div class="val">4.3k</div><div class="lbl">Techos Verdes</div></div>
+            <div class="hero-stat"><div class="val">−26%</div><div class="lbl">Consumo Gas</div></div>
         </div>
     </header>
 
-    <!-- INTERACTIVE CHAPTER NAVIGATION -->
     <nav class="chapters">
         <button class="chapter-btn active" onclick="showSection('verde')"><span class="chapter-num">1</span>Verde Urbano</button>
         <button class="chapter-btn" onclick="showSection('consumo')"><span class="chapter-num">2</span>Recursos</button>
         <button class="chapter-btn" onclick="showSection('clima')"><span class="chapter-num">3</span>Clima & Calor</button>
         <button class="chapter-btn" onclick="showSection('techos')"><span class="chapter-num">4</span>Techos Verdes</button>
         <button class="chapter-btn" onclick="showSection('metano')"><span class="chapter-num">5</span>Transición</button>
+        <button class="chapter-btn" onclick="showSection('cruzado')"><span class="chapter-num">6</span>Análisis Cruzado</button>
     </nav>
 
     <main>
-        <!-- SECTION 1: VERDE URBANO -->
         <section id="sec-verde" class="section active fade-in">
             <div class="section-intro">
                 <span class="insight-tag">Capítulo 1</span>
                 <h2>La expansión del <em>pulmón</em> milanés</h2>
-                <p>Desde 2011, Milán ha incrementado su superficie verde per cápita un 9.9%, alcanzando los 18.9 m² en 2022. Analizamos la composición de estos espacios por tipo de gestión.</p>
+                <p>Análisis de la evolución del verde urbano. Observamos un crecimiento sostenido tanto en superficie total como en disponibilidad por habitante.</p>
             </div>
-
-            <div class="callout">
-                <span class="callout-icon">🌿</span>
-                <p><strong>Insight clave:</strong> El mayor crecimiento se observa en parques urbanos y verde de gestión municipal, compensando la densificación del centro.</p>
-            </div>
-
-            <div class="grid-2">
-                <div class="card">
-                    <div class="card-title">Evolución verde por habitante</div>
-                    <div class="chart-wrap-tall"><canvas id="chartMq"></canvas></div>
-                    <div class="card-unit">m² por habitante (2011-2023)</div>
-                </div>
-                <div class="card">
-                    <div class="card-title">Distribución por categoría</div>
-                    <div id="barRaceVerde"></div>
-                </div>
+            <div class="card">
+                <div class="card-title">Evolución Total vs Per Cápita (2011-2023)</div>
+                <div class="chart-wrap-tall"><canvas id="chartVerdeDual"></canvas></div>
             </div>
         </section>
 
-        <!-- SECTION 2: CONSUMO -->
         <section id="sec-consumo" class="section fade-in">
             <div class="section-intro">
                 <span class="insight-tag">Capítulo 2</span>
-                <h2>Hacia una ciudad <em>eficiente</em></h2>
-                <p>El análisis del consumo per cápita revela una caída drástica en el uso de gas y agua, impulsada por mejores tecnologías de calefacción y conciencia ciudadana.</p>
+                <h2>Eficiencia de <em>Recursos</em></h2>
+                <p>La ciudad ha logrado reducir drásticamente su huella de recursos, especialmente en gas metano y agua potable.</p>
             </div>
-
             <div class="filter-bar">
-                <label>Filtrar recurso:</label>
+                <label>Filtrar:</label>
                 <button class="filter-btn active" onclick="filterConsumo('all')">Todos</button>
-                <button class="filter-btn" onclick="filterConsumo('elec')">Electricidad</button>
-                <button class="filter-btn" onclick="filterConsumo('gas')">Gas</button>
-                <button class="filter-btn" onclick="filterConsumo('agua')">Agua</button>
+                <button class="filter-btn" onclick="filterConsumo('elec')">⚡ Elec</button>
+                <button class="filter-btn" onclick="filterConsumo('gas')">🔥 Gas</button>
+                <button class="filter-btn" onclick="filterConsumo('agua')">💧 Agua</button>
             </div>
-
-            <div class="grid-3">
-                <div class="card">
-                    <div class="card-title">Electricidad</div>
-                    <div class="card-value">1,196</div>
-                    <div class="card-unit">kWh / hab.</div>
-                    <div class="card-delta down">▼ −2.7%</div>
-                </div>
-                <div class="card">
-                    <div class="card-title">Gas Metano</div>
-                    <div class="card-value">377.9</div>
-                    <div class="card-unit">m³ / hab.</div>
-                    <div class="card-delta down" style="background:rgba(248,113,113,0.2)">▼ −25.8%</div>
-                </div>
-                <div class="card">
-                    <div class="card-title">Agua</div>
-                    <div class="card-value">83.1</div>
-                    <div class="card-unit">m³ / hab.</div>
-                    <div class="card-delta down">▼ −9.8%</div>
-                </div>
-            </div>
-
-            <div class="card" style="margin-top: 32px;">
-                <div class="card-title">Evolución Histórica de Consumo</div>
+            <div class="card">
                 <div class="chart-wrap-tall"><canvas id="chartConsumo"></canvas></div>
             </div>
         </section>
 
-        <!-- SECTION 3: CLIMA -->
         <section id="sec-clima" class="section fade-in">
             <div class="section-intro">
                 <span class="insight-tag">Capítulo 3</span>
-                <h2>Isla de Calor y <em>Microclimas</em></h2>
-                <p>Milán no es térmicamente uniforme. El centro y Bicocca actúan como focos de calor, mientras que las zonas periféricas del sur registran temperaturas más bajas.</p>
+                <h2>Isla de Calor y <em>Clima</em></h2>
+                <p>Diferencias térmicas críticas entre las distintas estaciones meteorológicas de la ciudad.</p>
             </div>
-
-            <div class="filter-bar">
-                <label>Detalle por zona:</label>
-                <button class="filter-btn active" onclick="filterZona('all', this)">Todas</button>
-                <button class="filter-btn" onclick="filterZona('Milano Centro', this)">Centro</button>
-                <button class="filter-btn" onclick="filterZona('Milano Bicocca', this)">Bicocca</button>
-                <button class="filter-btn" onclick="filterZona('Milano Sud', this)">Sur</button>
-            </div>
-
             <div class="grid-2">
                 <div class="card">
-                    <div class="card-title">Temperatura Media Anual</div>
+                    <div class="card-title">Temp. Media por Estación</div>
                     <div class="chart-wrap"><canvas id="chartTemp"></canvas></div>
                 </div>
                 <div class="card">
-                    <div class="card-title">Comparativa de Indicadores</div>
-                    <div id="heatmapClima" style="margin-top: 20px;"></div>
+                    <div class="card-title">Matriz de Indicadores Climáticos</div>
+                    <div id="heatmapClima"></div>
                 </div>
-            </div>
-
-            <div class="callout" style="margin-top: 32px;">
-                <span class="callout-icon">🌡️</span>
-                <p><strong>Dato crítico:</strong> La zona de Bocconi registra hasta 63 noches tropicales por año, un indicador clave del estrés térmico urbano.</p>
             </div>
         </section>
 
-        <!-- SECTION 4: TECHOS VERDES -->
         <section id="sec-techos" class="section fade-in">
             <div class="section-intro">
                 <span class="insight-tag">Capítulo 4</span>
-                <h2>Techos que <em>mitigan</em> el calor</h2>
-                <p>Con 4,396 edificios identificados, los techos verdes son la principal estrategia de enfriamiento pasivo en edificios residenciales e industriales.</p>
+                <h2>Techos <em>Verdes</em></h2>
+                <p>Infraestructura verde aplicada a edificios para mitigar la temperatura urbana.</p>
             </div>
-
-            <div class="filter-bar">
-                <label>Tipo de edificio:</label>
-                <button class="filter-btn active" onclick="filterTechos('all', this)">Todos</button>
-                <button class="filter-btn" onclick="filterTechos('Residencial', this)">Residencial</button>
-                <button class="filter-btn" onclick="filterTechos('Industrial', this)">Industrial</button>
-                <button class="filter-btn" onclick="filterTechos('Servicios', this)">Servicios</button>
-            </div>
-
             <div class="grid-3">
-                <div class="card">
-                    <div class="card-title">Conteo de Edificios</div>
-                    <div class="card-value" id="techoTotal">4,396</div>
-                    <div class="card-unit">Sistemas instalados</div>
-                </div>
-                <div class="card">
-                    <div class="card-title">Área Promedio</div>
-                    <div class="card-value" id="techoArea">420</div>
-                    <div class="card-unit">m² por edificio</div>
-                </div>
-                <div class="card">
-                    <div class="card-title">Volumen Vegetal</div>
-                    <div class="card-value" id="techoVol">24.5</div>
-                    <div class="card-unit">Índice UN_VOL_AV</div>
-                </div>
+                <div class="card"><div class="card-title">Edificios</div><div class="card-value" id="techoTotal">4,396</div></div>
+                <div class="card"><div class="card-title">Área Prom.</div><div class="card-value" id="techoArea">420</div><div class="card-unit">m²</div></div>
+                <div class="card"><div class="card-title">Vol. Vegetal</div><div class="card-value" id="techoVol">24.5</div></div>
             </div>
-
-            <div class="card" style="margin-top: 32px;">
-                <div class="card-title">Distribución por clasificación</div>
-                <div class="chart-wrap-tall"><canvas id="chartTechoTipo"></canvas></div>
+            <div class="card" style="margin-top:24px">
+                <div class="chart-wrap"><canvas id="chartTechoTipo"></canvas></div>
             </div>
         </section>
 
-        <!-- SECTION 5: METANO -->
         <section id="sec-metano" class="section fade-in">
             <div class="section-intro">
                 <span class="insight-tag">Capítulo 5</span>
-                <h2>Descarbonización de la <em>red</em></h2>
-                <p>366 zonas en Milán ya operan sin suministro de gas metano, marcando el inicio de la transición hacia sistemas de energía eléctrica y renovable.</p>
+                <h2>Transición a <em>Cero Gas</em></h2>
+                <p>Distribución geográfica de las zonas que ya no dependen del suministro de gas metano.</p>
             </div>
-
             <div class="grid-2">
                 <div class="card">
-                    <div class="card-title">Barrios sin metano (Top 10)</div>
-                    <div class="chart-wrap-tall"><canvas id="chartMetanoMunicipio"></canvas></div>
+                    <div class="card-title">Distribución Geo-espacial por Municipio</div>
+                    <div class="chart-wrap-tall"><canvas id="chartMetanoGeo"></canvas></div>
                 </div>
                 <div class="card">
-                    <div class="card-title">Progreso de Transición</div>
-                    <div class="callout" style="background:rgba(96,165,250,0.05); border-color:rgba(96,165,250,0.2)">
-                        <span class="callout-icon">⚡</span>
-                        <p>El Municipio 7 lidera la transición con el mayor número de zonas descarbonizadas, concentradas en el área del Parco Agricolo Sud.</p>
-                    </div>
+                    <div class="card-title">Top Barrios sin Metano</div>
+                    <div class="chart-wrap-tall"><canvas id="chartMetanoMunicipio"></canvas></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-cruzado" class="section fade-in">
+            <div class="section-intro">
+                <span class="insight-tag">Capítulo 6</span>
+                <h2>Análisis <em>Cruzado</em></h2>
+                <p>Relaciones profundas entre variables climáticas y factores de sostenibilidad.</p>
+            </div>
+            <div class="card">
+                <div class="card-title">Matriz de Correlación de Pearson</div>
+                <div id="correlationLabels" style="display:flex; justify-content:space-around; margin-bottom:10px; font-size:10px; color:var(--muted)"></div>
+                <div id="correlationMatrix" class="corr-grid"></div>
+                <div class="card-unit" style="margin-top:16px">Los valores cercanos a 1.0 indican una correlación positiva fuerte (ej. Temperatura vs Noches Tropicales).</div>
+            </div>
+            
+            <div class="grid-2" style="margin-top:32px">
+                <div class="card" style="border-color:var(--green1)">
+                    <div class="card-title" style="color:var(--green1)">KPI Verde</div>
+                    <div class="card-value">25.7M</div>
+                    <div class="card-unit">Metros cuadrados totales</div>
+                </div>
+                <div class="card" style="border-color:var(--red)">
+                    <div class="card-title" style="color:var(--red)">Calor Crítico</div>
+                    <div class="card-value">38.2°C</div>
+                    <div class="card-unit">Máxima registrada en el Centro</div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer style="padding: 100px 60px; border-top: 1px solid var(--border); text-align: center;">
-        <p style="color:var(--muted); font-size: 14px; letter-spacing: 1px;">&copy; 2024 PROYECTO MILÁN VERDE — ANÁLISIS DE DATOS PARA LA RESILIENCIA URBANA</p>
+    <footer>
+        <p>&copy; 2024 PROYECTO MILÁN VERDE — RESILIENCIA URBANA</p>
     </footer>
 
-    <!-- Core Script -->
     <script src="script.js"></script>
 </body>
 </html>
