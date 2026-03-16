@@ -62,9 +62,68 @@ async function loadMilanGeoJSON() {
     const response = await fetch('milan_districts_simple.geojson');
     milanGeoData = await response.json();
     console.log("GeoJSON loaded successfully");
+    renderMapBackground();
   } catch (err) {
     console.error("Error loading GeoJSON", err);
   }
+}
+
+function getNeighborhood(x, y) {
+  if (!milanGeoData) return null;
+  for (const feature of milanGeoData.features) {
+    const coords = feature.geometry.coordinates;
+    const rings = feature.geometry.type === 'Polygon' ? [coords] : coords;
+    for (const poly of rings) {
+      const ring = Array.isArray(poly[0][0]) ? poly[0] : poly;
+      let inside = false;
+      for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+        let xi = ring[i][0], yi = ring[i][1];
+        let xj = ring[j][0], yj = ring[j][1];
+        if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) inside = !inside;
+      }
+      if (inside) return feature.properties.NIL;
+    }
+  }
+  return null;
+}
+
+function renderMapBackground() {
+  if (!milanGeoData) return;
+  const canvas = document.createElement('canvas');
+  canvas.width = 1200;
+  canvas.height = 800;
+  const ctx = canvas.getContext('2d');
+  const minX = 9.02, maxX = 9.30, minY = 45.38, maxY = 45.56;
+  const project = (lon, lat) => ({
+    x: (lon - minX) / (maxX - minX) * canvas.width,
+    y: canvas.height - (lat - minY) / (maxY - minY) * canvas.height
+  });
+  ctx.fillStyle = '#0a1a0a';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.strokeStyle = 'rgba(74, 222, 128, 0.4)';
+  ctx.lineWidth = 1.5;
+  milanGeoData.features.forEach(f => {
+    const coords = f.geometry.coordinates;
+    const rings = f.geometry.type === 'Polygon' ? [coords] : coords;
+    rings.forEach(poly => {
+      const ring = Array.isArray(poly[0][0]) ? poly[0] : poly;
+      ctx.beginPath();
+      ring.forEach((p, idx) => {
+        const pt = project(p[0], p[1]);
+        if (idx === 0) ctx.moveTo(pt.x, pt.y);
+        else ctx.lineTo(pt.x, pt.y);
+      });
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(34, 197, 94, 0.05)';
+      ctx.fill();
+      ctx.stroke();
+    });
+  });
+  const dataUrl = canvas.toDataURL();
+  document.querySelectorAll('.map-overlay').forEach(el => {
+    el.style.backgroundImage = `url(${dataUrl})`;
+    el.style.backgroundSize = '100% 100%';
+  });
 }
 
 function showSection(id) {
@@ -237,20 +296,8 @@ function initMethane() {
             title: () => "",
             label: (ctx) => {
               const p = ctx.raw;
-              if (milanGeoData) {
-                const feat = milanGeoData.features.find(f => {
-                  const poly = f.geometry.coordinates[0];
-                  let inside = false;
-                  for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
-                    let xi = poly[i][0], yi = poly[i][1];
-                    let xj = poly[j][0], yj = poly[j][1];
-                    if (((yi > p.y) != (yj > p.y)) && (p.x < (xj - xi) * (p.y - yi) / (yj - yi) + xi)) inside = !inside;
-                  }
-                  return inside;
-                });
-                if (feat) return `Neighborhood: ${feat.properties.NIL}`;
-              }
-              return `Location: ${p.x}, ${p.y}`;
+              const nh = getNeighborhood(p.x, p.y);
+              return nh ? `Neighborhood: ${nh}` : `Coord: ${p.x}, ${p.y}`;
             }
           }
         }
@@ -300,20 +347,8 @@ function initMethane() {
             title: () => "Critical Area",
             label: (ctx) => {
               const p = ctx.raw;
-              if (milanGeoData) {
-                const feat = milanGeoData.features.find(f => {
-                  const poly = f.geometry.coordinates[0];
-                  let inside = false;
-                  for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
-                    let xi = poly[i][0], yi = poly[i][1];
-                    let xj = poly[j][0], yj = poly[j][1];
-                    if (((yi > p.y) != (yj > p.y)) && (p.x < (xj - xi) * (p.y - yi) / (yj - yi) + xi)) inside = !inside;
-                  }
-                  return inside;
-                });
-                if (feat) return `Neighborhood: ${feat.properties.NIL}`;
-              }
-              return "Analysis Zone";
+              const nh = getNeighborhood(p.x, p.y);
+              return nh ? `Neighborhood: ${nh}` : "Analysis Zone";
             }
           }
         }
