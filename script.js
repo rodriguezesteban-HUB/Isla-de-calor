@@ -55,6 +55,17 @@ const GREEN_PALETTE = ['#4ade80','#22c55e','#16a34a','#a3e635','#facc15','#fbbf2
 // ============================================================
 
 let initialized = {};
+let milanGeoData = null;
+
+async function loadMilanGeoJSON() {
+  try {
+    const response = await fetch('milan_districts_simple.geojson');
+    milanGeoData = await response.json();
+    console.log("GeoJSON loaded successfully");
+  } catch (err) {
+    console.error("Error loading GeoJSON", err);
+  }
+}
 
 function showSection(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
@@ -219,7 +230,31 @@ function initMethane() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      plugins: { legend: { display: false } },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: () => "",
+            label: (ctx) => {
+              const p = ctx.raw;
+              if (milanGeoData) {
+                const feat = milanGeoData.features.find(f => {
+                  const poly = f.geometry.coordinates[0];
+                  let inside = false;
+                  for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+                    let xi = poly[i][0], yi = poly[i][1];
+                    let xj = poly[j][0], yj = poly[j][1];
+                    if (((yi > p.y) != (yj > p.y)) && (p.x < (xj - xi) * (p.y - yi) / (yj - yi) + xi)) inside = !inside;
+                  }
+                  return inside;
+                });
+                if (feat) return `Neighborhood: ${feat.properties.NIL}`;
+              }
+              return `Location: ${p.x}, ${p.y}`;
+            }
+          }
+        }
+      },
       scales: {
         x: { display: false, min: 9.02, max: 9.30 },
         y: { display: false, min: 45.38, max: 45.56 }
@@ -258,7 +293,31 @@ function initMethane() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      plugins: { legend: { display: false } },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: () => "Critical Area",
+            label: (ctx) => {
+              const p = ctx.raw;
+              if (milanGeoData) {
+                const feat = milanGeoData.features.find(f => {
+                  const poly = f.geometry.coordinates[0];
+                  let inside = false;
+                  for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+                    let xi = poly[i][0], yi = poly[i][1];
+                    let xj = poly[j][0], yj = poly[j][1];
+                    if (((yi > p.y) != (yj > p.y)) && (p.x < (xj - xi) * (p.y - yi) / (yj - yi) + xi)) inside = !inside;
+                  }
+                  return inside;
+                });
+                if (feat) return `Neighborhood: ${feat.properties.NIL}`;
+              }
+              return "Analysis Zone";
+            }
+          }
+        }
+      },
       scales: {
         x: { display: false, min: 9.02, max: 9.30 },
         y: { display: false, min: 45.38, max: 45.56 }
@@ -349,4 +408,7 @@ function initCross() {
   matrix.innerHTML = h;
 }
 
-window.addEventListener('load', () => showSection('green'));
+  window.addEventListener('load', async () => {
+  await loadMilanGeoJSON();
+  showSection('green');
+});
