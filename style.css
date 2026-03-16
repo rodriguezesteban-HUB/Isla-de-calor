@@ -61,6 +61,19 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); min-
 .filter-btn { padding: 8px 16px; border-radius: 12px; background: var(--card2); border: 1px solid var(--border); color: var(--text); cursor: pointer; font-size: 13px; }
 .filter-btn.active { background: var(--green3); border-color: var(--green3); }
 
+/* Map Overlay for Transition Section */
+.map-overlay {
+  background-image: url('milan_map.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.map-overlay canvas {
+  background: transparent !important;
+}
+
 /* HEATMAP & CORRELATION Matrix Fix */
 .matrix-container {
   background: rgba(0,0,0,0.2);

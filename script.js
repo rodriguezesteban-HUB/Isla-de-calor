@@ -211,10 +211,20 @@ function initMethane() {
       datasets: Array.from({length:9}, (_, i) => ({
         label: `Mun. ${i+1}`,
         data: methaneGeo.filter(p => p.m === i+1),
-        backgroundColor: GREEN_PALETTE[i % 9]
+        backgroundColor: GREEN_PALETTE[i % 9],
+        pointRadius: 6,
+        pointHoverRadius: 8
       }))
     },
-    options: { responsive: true, maintainAspectRatio: false }
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { display: false, min: 9.02, max: 9.30 },
+        y: { display: false, min: 45.38, max: 45.56 }
+      }
+    }
   });
 
   // Density plot (Simplified spatial heatmap)
@@ -241,14 +251,18 @@ function initMethane() {
     data: {
       datasets: [{
         label: 'Density',
-        data: densityData.map(d => ({x: d.x, y: d.y, r: d.v * 5})),
-        backgroundColor: 'rgba(74, 222, 128, 0.5)'
+        data: densityData.map(d => ({x: d.x, y: d.y, r: d.v * 7})),
+        backgroundColor: 'rgba(74, 222, 128, 0.7)'
       }]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      scales: { x: { display: false }, y: { display: false } }
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { display: false, min: 9.02, max: 9.30 },
+        y: { display: false, min: 45.38, max: 45.56 }
+      }
     }
   });
 
