@@ -1,28 +1,27 @@
 // ============================================================
-// FUENTES DE DATOS (Extraídas de milan_verde.ipynb y CSVs)
+// DATA SOURCES (Extracted from milan_verde.ipynb and CSVs)
 // ============================================================
 
-const mqHabData = [17.2, 17.2, 17.2, 17.2, 17.4, 17.7, 17.7, 17.6, 17.6, 17.9, 18.4, 18.9, 18.8];
-const mqTotalData = [21.78, 22.30, 22.47, 22.92, 23.57, 24.16, 24.42, 24.85, 25.02, 25.11, 25.19, 25.62, 25.69];
+const sqmHabData = [17.2, 17.2, 17.2, 17.2, 17.4, 17.7, 17.7, 17.6, 17.6, 17.9, 18.4, 18.9, 18.8];
+const sqmTotalData = [21.78, 22.30, 22.47, 22.92, 23.57, 24.16, 24.42, 24.85, 25.02, 25.11, 25.19, 25.62, 25.69];
 const years = [2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
 
-const consumoRaw = [
-  {anno:2000,tipo:'elec',val:1130.2},{anno:2001,tipo:'elec',val:1143.9},{anno:2002,tipo:'elec',val:1195.5},{anno:2003,tipo:'elec',val:1222.8},{anno:2004,tipo:'elec',val:1228.6},{anno:2005,tipo:'elec',val:1225.0},{anno:2006,tipo:'elec',val:1219.7},{anno:2007,tipo:'elec',val:1197.0},{anno:2008,tipo:'elec',val:1203.0},{anno:2009,tipo:'elec',val:1202.9},{anno:2010,tipo:'elec',val:1200.7},{anno:2011,tipo:'elec',val:1196.1},
-  {anno:2000,tipo:'gas',val:509},{anno:2001,tipo:'gas',val:500.7},{anno:2002,tipo:'gas',val:504.2},{anno:2003,tipo:'gas',val:480.2},{anno:2004,tipo:'gas',val:442.4},{anno:2005,tipo:'gas',val:434.5},{anno:2006,tipo:'gas',val:431.3},{anno:2007,tipo:'gas',val:381.1},{anno:2008,tipo:'gas',val:384.9},{anno:2009,tipo:'gas',val:389.6},{anno:2010,tipo:'gas',val:406.2},{anno:2011,tipo:'gas',val:377.9},
-  {anno:2000,tipo:'agua',val:92.1},{anno:2001,tipo:'agua',val:91.3},{anno:2002,tipo:'agua',val:90.4},{anno:2003,tipo:'agua',val:87.3},{anno:2004,tipo:'agua',val:80.4},{anno:2005,tipo:'agua',val:81.3},{anno:2006,tipo:'agua',val:82.2},{anno:2007,tipo:'agua',val:81.6},{anno:2008,tipo:'agua',val:84.5},{anno:2009,tipo:'agua',val:85.8},{anno:2010,tipo:'agua',val:83.2},{anno:2011,tipo:'agua',val:83.1}
+const consumptionRaw = [
+  {year:2000,type:'elec',val:1130.2},{year:2001,type:'elec',val:1143.9},{year:2002,type:'elec',val:1195.5},{year:2003,type:'elec',val:1222.8},{year:2004,type:'elec',val:1228.6},{year:2005,type:'elec',val:1225.0},{year:2006,type:'elec',val:1219.7},{year:2007,type:'elec',val:1197.0},{year:2008,type:'elec',val:1203.0},{year:2009,type:'elec',val:1202.9},{year:2010,type:'elec',val:1200.7},{year:2011,type:'elec',val:1196.1},
+  {year:2000,type:'gas',val:509},{year:2001,type:'gas',val:500.7},{year:2002,type:'gas',val:504.2},{year:2003,type:'gas',val:480.2},{year:2004,type:'gas',val:442.4},{year:2005,type:'gas',val:434.5},{year:2006,type:'gas',val:431.3},{year:2007,type:'gas',val:381.1},{year:2008,type:'gas',val:384.9},{year:2009,type:'gas',val:389.6},{year:2010,type:'gas',val:406.2},{year:2011,type:'gas',val:377.9},
+  {year:2000,type:'water',val:92.1},{year:2001,type:'water',val:91.3},{year:2002,type:'water',val:90.4},{year:2003,type:'water',val:87.3},{year:2004,type:'water',val:80.4},{year:2005,type:'water',val:81.3},{year:2006,type:'water',val:82.2},{year:2007,type:'water',val:81.6},{year:2008,type:'water',val:84.5},{year:2009,type:'water',val:85.8},{year:2010,type:'water',val:83.2},{year:2011,type:'water',val:83.1}
 ];
 
-const climaData = {
-  zonas: ['Milano Bicocca', 'Milano Bocconi', 'Milano Bovisa', 'Milano Centro', "Milano Citta' Studi", 'Milano San Siro', 'Milano Sud'],
-  zonasShort: ['Bicocca', 'Bocconi', 'Bovisa', 'Centro', 'Città Studi', 'San Siro', 'Sur'],
-  tempMedia: [15.4, 15.7, 15.4, 15.8, 15.4, 15.0, 15.2],
-  diasCalor: [56.3, 52.3, 55.2, 52.8, 45.8, 48.5, 50.0],
-  nocheTrop: [55.5, 63.3, 56.3, 62.3, 58.5, 54.5, 56.8],
+const climateData = {
+  zones: ['Milano Bicocca', 'Milano Bocconi', 'Milano Bovisa', 'Milano Centro', "Milano Citta' Studi", 'Milano San Siro', 'Milano Sud'],
+  zonesShort: ['Bicocca', 'Bocconi', 'Bovisa', 'Center', 'Città Studi', 'San Siro', 'South'],
+  avgTemp: [15.4, 15.7, 15.4, 15.8, 15.4, 15.0, 15.2],
+  heatDays: [56.3, 52.3, 55.2, 52.8, 45.8, 48.5, 50.0],
+  tropicalNights: [55.5, 63.3, 56.3, 62.3, 58.5, 54.5, 56.8],
   precip: [1017.9, 906.4, 1139.0, 1016.9, 1056.8, 734.0, 873.5]
 };
 
-// Coordenadas reales de zonas sin gas metano (Muestreo representativo)
-const metanoGeo = [
+const methaneGeo = [
   {m:7,x:9.0438,y:45.4657},{m:2,x:9.2579,y:45.5183},{m:3,x:9.2643,y:45.5097},{m:8,x:9.0989,y:45.5114},{m:3,x:9.2636,y:45.4699},
   {m:5,x:9.1698,y:45.4172},{m:5,x:9.2081,y:45.4082},{m:7,x:9.0955,y:45.4652},{m:9,x:9.1849,y:45.5196},{m:7,x:9.0787,y:45.4711},
   {m:7,x:9.0780,y:45.4449},{m:3,x:9.2551,y:45.5078},{m:8,x:9.1008,y:45.5085},{m:8,x:9.1009,y:45.5090},{m:8,x:9.0994,y:45.5121},
@@ -35,7 +34,7 @@ const metanoGeo = [
 ];
 
 const correlationMatrix = {
-  labels: ['T. Media', 'T. Máxima', 'T. Mínima', 'Días Calor', 'Noches Trop.', 'Días Hielo', 'Humedad', 'Precipitación', 'Días Lluvia'],
+  labels: ['Avg. Temp', 'Max Temp', 'Min Temp', 'Heat Days', 'Trop. Nights', 'Ice Days', 'Humidity', 'Precipitation', 'Rain Days'],
   values: [
     [1.00, 0, 0, 0, 0, 0, 0, 0, 0],
     [0.37, 1.00, 0, 0, 0, 0, 0, 0, 0],
@@ -52,7 +51,7 @@ const correlationMatrix = {
 const GREEN_PALETTE = ['#4ade80','#22c55e','#16a34a','#a3e635','#facc15','#fbbf24','#f87171','#60a5fa','#c084fc'];
 
 // ============================================================
-// LÓGICA DE LA APLICACIÓN
+// APPLICATION LOGIC
 // ============================================================
 
 let initialized = {};
@@ -80,33 +79,33 @@ function showSection(id) {
 
 function initSection(id) {
   switch(id) {
-    case 'verde': initVerde(); break;
-    case 'consumo': initConsumo(); break;
-    case 'clima': initClima(); break;
-    case 'techos': initTechos(); break;
-    case 'metano': initMetano(); break;
-    case 'cruzado': initCruzado(); break;
+    case 'green': initGreen(); break;
+    case 'consumption': initConsumption(); break;
+    case 'climate': initClimate(); break;
+    case 'roofs': initRoofs(); break;
+    case 'methane': initMethane(); break;
+    case 'cross': initCross(); break;
   }
 }
 
-// ── VERDE ──────────────────────────────────────────────────
-function initVerde() {
-  const ctx = document.getElementById('chartVerdeDual');
+// ── GREEN ──────────────────────────────────────────────────
+function initGreen() {
+  const ctx = document.getElementById('chartGreenDual');
   new Chart(ctx, {
     type: 'bar',
     data: {
       labels: years,
       datasets: [
         {
-          label: 'Total m² verde (Millones)',
-          data: mqTotalData,
+          label: 'Total sqm green (Millions)',
+          data: sqmTotalData,
           backgroundColor: 'rgba(34, 197, 94, 0.6)',
           borderRadius: 4,
           yAxisID: 'y'
         },
         {
-          label: 'm² / habitante',
-          data: mqHabData,
+          label: 'sqm / inhabitant',
+          data: sqmHabData,
           type: 'line',
           borderColor: '#a3e635',
           borderWidth: 3,
@@ -120,47 +119,47 @@ function initVerde() {
       responsive: true,
       maintainAspectRatio: false,
       scales: {
-        y: { position: 'left', title: { display: true, text: 'Millones m²' } },
-        y1: { position: 'right', title: { display: true, text: 'm²/hab' }, min: 17 }
+        y: { position: 'left', title: { display: true, text: 'Million sqm' } },
+        y1: { position: 'right', title: { display: true, text: 'sqm/hab' }, min: 17 }
       }
     }
   });
 }
 
-// ── CONSUMO ────────────────────────────────────────────────
-function initConsumo() {
-  const getVals = (tipo) => consumoRaw.filter(d => d.tipo === tipo).map(d => d.val);
-  const yearsConsumo = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011];
-  const ctx = document.getElementById('chartConsumo');
-  window.activeConsumoChart = new Chart(ctx, {
+// ── CONSUMPTION ────────────────────────────────────────────
+function initConsumption() {
+  const getVals = (type) => consumptionRaw.filter(d => d.type === type).map(d => d.val);
+  const yearsConsumption = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011];
+  const ctx = document.getElementById('chartConsumption');
+  window.activeConsumptionChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: yearsConsumo,
+      labels: yearsConsumption,
       datasets: [
-        { label: 'Electricidad (kWh)', data: getVals('elec'), borderColor: '#fbbf24', tension: 0.4 },
-        { label: 'Gas Metano (m³)', data: getVals('gas'), borderColor: '#f87171', tension: 0.4 },
-        { label: 'Agua (m³)', data: getVals('agua'), borderColor: '#60a5fa', tension: 0.4 }
+        { label: 'Electricity (kWh)', data: getVals('elec'), borderColor: '#fbbf24', tension: 0.4 },
+        { label: 'Methane Gas (m³)', data: getVals('gas'), borderColor: '#f87171', tension: 0.4 },
+        { label: 'Water (m³)', data: getVals('water'), borderColor: '#60a5fa', tension: 0.4 }
       ]
     },
     options: { responsive: true, maintainAspectRatio: false }
   });
 }
 
-function filterConsumo(tipo) {
-  const ds = window.activeConsumoChart.data.datasets;
-  ds[0].hidden = tipo !== 'all' && tipo !== 'elec';
-  ds[1].hidden = tipo !== 'all' && tipo !== 'gas';
-  ds[2].hidden = tipo !== 'all' && tipo !== 'agua';
-  window.activeConsumoChart.update();
+function filterConsumption(type) {
+  const ds = window.activeConsumptionChart.data.datasets;
+  ds[0].hidden = type !== 'all' && type !== 'elec';
+  ds[1].hidden = type !== 'all' && type !== 'gas';
+  ds[2].hidden = type !== 'all' && type !== 'water';
+  window.activeConsumptionChart.update();
 }
 
-// ── CLIMA ──────────────────────────────────────────────────
-function initClima() {
+// ── CLIMATE ────────────────────────────────────────────────
+function initClimate() {
   new Chart(document.getElementById('chartTemp'), {
     type: 'bar',
     data: {
-      labels: climaData.zonasShort,
-      datasets: [{ label: 'Temp. Media (°C)', data: climaData.tempMedia, backgroundColor: '#fbbf24' }]
+      labels: climateData.zonesShort,
+      datasets: [{ label: 'Avg. Temp (°C)', data: climateData.avgTemp, backgroundColor: '#fbbf24' }]
     },
     options: { responsive: true, maintainAspectRatio: false, scales: { y: { min: 14 } } }
   });
@@ -168,14 +167,14 @@ function initClima() {
 }
 
 function renderHeatmap(idx) {
-  const container = document.getElementById('heatmapClima');
+  const container = document.getElementById('heatmapClimate');
   const metrics = [
-    {l: 'T. Media', k: 'tempMedia'}, {l: 'D. Calor', k: 'diasCalor'}, {l: 'N. Trop.', k: 'nocheTrop'}, {l: 'Precip.', k: 'precip'}
+    {l: 'Avg. Temp', k: 'avgTemp'}, {l: 'Heat Days', k: 'heatDays'}, {l: 'Trop. Nights', k: 'tropicalNights'}, {l: 'Precip.', k: 'precip'}
   ];
-  let h = `<div class="heatmap"><div class="heatmap-header">Métrica</div>${climaData.zonasShort.map(z => `<div class="heatmap-header">${z}</div>`).join('')}`;
+  let h = `<div class="heatmap"><div class="heatmap-header">Metric</div>${climateData.zonesShort.map(z => `<div class="heatmap-header">${z}</div>`).join('')}`;
   metrics.forEach(m => {
     h += `<div class="heatmap-label">${m.l}</div>`;
-    const vs = climaData[m.k], max = Math.max(...vs), min = Math.min(...vs);
+    const vs = climateData[m.k], max = Math.max(...vs), min = Math.min(...vs);
     vs.forEach(v => {
       const r = (v - min) / (max - min);
       h += `<div class="heatmap-cell" style="background:rgba(74,222,128,${0.1+r*0.8})">${v.toFixed(0)}</div>`;
@@ -184,53 +183,47 @@ function renderHeatmap(idx) {
   container.innerHTML = h + '</div>';
 }
 
-function filterZona(z, b) {
-  document.querySelectorAll('#sec-clima .filter-btn').forEach(x => x.classList.remove('active'));
-  b.classList.add('active');
-  renderHeatmap(z === 'all' ? null : climaData.zonas.indexOf(z));
-}
-
-// ── TECHOS ─────────────────────────────────────────────────
-function initTechos() {
-  new Chart(document.getElementById('chartTechoTipo'), {
+// ── ROOFS ──────────────────────────────────────────────────
+function initRoofs() {
+  new Chart(document.getElementById('chartRoofType'), {
     type: 'doughnut',
     data: {
-      labels: ['Residencial', 'Industrial', 'Servicios', 'Otros'],
+      labels: ['Residential', 'Industrial', 'Services', 'Others'],
       datasets: [{ data: [3910, 252, 142, 92], backgroundColor: GREEN_PALETTE }]
     },
     options: { responsive: true, maintainAspectRatio: false }
   });
 }
 
-function filterTechos(t, b) {
-  document.querySelectorAll('#sec-techos .filter-btn').forEach(x => x.classList.remove('active'));
+function filterRoofs(t, b) {
+  document.querySelectorAll('#sec-roofs .filter-btn').forEach(x => x.classList.remove('active'));
   b.classList.add('active');
-  const d = { all: [4396, 420, 24.5], Residencial: [3910, 320, 22.4], Industrial: [252, 890, 18.7], Servicios: [142, 540, 31.2] }[t] || [4396, 420, 24.5];
-  ['techoTotal', 'techoArea', 'techoVol'].forEach((id, i) => document.getElementById(id).innerText = d[i]);
+  const d = { all: [4396, 420, 24.5], Residential: [3910, 320, 22.4], Industrial: [252, 890, 18.7], Services: [142, 540, 31.2] }[t] || [4396, 420, 24.5];
+  ['roofTotal', 'roofArea', 'roofVol'].forEach((id, i) => document.getElementById(id).innerText = d[i]);
 }
 
-// ── METANO ─────────────────────────────────────────────────
-function initMetano() {
-  // Gráfico de dispersión por municipio
-  new Chart(document.getElementById('chartMetanoGeo'), {
+// ── METHANE ────────────────────────────────────────────────
+function initMethane() {
+  // Scatter plot by municipality
+  new Chart(document.getElementById('chartMethaneGeo'), {
     type: 'scatter',
     data: {
       datasets: Array.from({length:9}, (_, i) => ({
         label: `Mun. ${i+1}`,
-        data: metanoGeo.filter(p => p.m === i+1),
+        data: methaneGeo.filter(p => p.m === i+1),
         backgroundColor: GREEN_PALETTE[i % 9]
       }))
     },
     options: { responsive: true, maintainAspectRatio: false }
   });
 
-  // Gráfico de densidad (Heatmap espacial simplificado)
-  const gridCtx = document.getElementById('chartMetanoDensity');
+  // Density plot (Simplified spatial heatmap)
+  const gridCtx = document.getElementById('chartMethaneDensity');
   const binsX = 15, binsY = 15;
   const minX = 9.04, maxX = 9.28, minY = 45.39, maxY = 45.54;
   const grid = Array.from({length: binsY}, () => Array(binsX).fill(0));
   
-  metanoGeo.forEach(p => {
+  methaneGeo.forEach(p => {
     const ix = Math.floor((p.x - minX) / (maxX - minX) * binsX);
     const iy = Math.floor((p.y - minY) / (maxY - minY) * binsY);
     if (ix >= 0 && ix < binsX && iy >= 0 && iy < binsY) grid[iy][ix]++;
@@ -247,7 +240,7 @@ function initMetano() {
     type: 'bubble',
     data: {
       datasets: [{
-        label: 'Densidad',
+        label: 'Density',
         data: densityData.map(d => ({x: d.x, y: d.y, r: d.v * 5})),
         backgroundColor: 'rgba(74, 222, 128, 0.5)'
       }]
@@ -259,12 +252,12 @@ function initMetano() {
     }
   });
 
-  new Chart(document.getElementById('chartMetanoMunicipio'), {
+  new Chart(document.getElementById('chartMethaneDistrict'), {
     type: 'bar',
     data: {
       labels: ['Parco Sud', 'Abbazie', 'Niguarda', 'Baggio', 'Forze Armate', 'Maggiore'],
       datasets: [{ 
-        label: 'Zonas sin gas', 
+        label: 'Zones without gas', 
         data: [44, 37, 30, 25, 20, 19], 
         backgroundColor: '#60a5fa' 
       }]
@@ -275,26 +268,26 @@ function initMetano() {
       maintainAspectRatio: false,
       scales: {
         x: {
-          title: { display: true, text: 'Cantidad de zonas descarbonizadas', color: '#6b8f6b' },
+          title: { display: true, text: 'Number of decarbonized zones', color: '#6b8f6b' },
           grid: { color: 'rgba(255,255,255,0.05)' }
         },
         y: {
-          title: { display: true, text: 'Barrio (NIL)', color: '#6b8f6b' },
+          title: { display: true, text: 'Neighborhood (NIL)', color: '#6b8f6b' },
           grid: { display: false }
         }
       }
     }
   });
 
-  new Chart(document.getElementById('chartMetanoRank'), {
+  new Chart(document.getElementById('chartMethaneRank'), {
     type: 'doughnut',
     data: {
       labels: [
-        'Mun. 7 (Oeste - Baggio)', 
-        'Mun. 5 (Sur - Vigentino)', 
-        'Mun. 4 (Sureste)', 
-        'Mun. 2 (Norte)', 
-        'Otros Distritos'
+        'Mun. 7 (West - Baggio)', 
+        'Mun. 5 (South - Vigentino)', 
+        'Mun. 4 (Southeast)', 
+        'Mun. 2 (North)', 
+        'Other Districts'
       ],
       datasets: [{
         data: [153, 88, 35, 24, 66],
@@ -310,7 +303,7 @@ function initMetano() {
         tooltip: {
           callbacks: {
             label: function(context) {
-              return ` ${context.label}: ${context.raw} zonas descarbonizadas`;
+              return ` ${context.label}: ${context.raw} decarbonized zones`;
             }
           }
         }
@@ -319,8 +312,8 @@ function initMetano() {
   });
 }
 
-// ── ANÁLISIS CRUZADO ───────────────────────────────────────
-function initCruzado() {
+// ── CROSS-ANALYSIS ─────────────────────────────────────────
+function initCross() {
   const matrix = document.getElementById('correlationMatrix');
   const xLabels = document.getElementById('xLabels');
   const yLabels = document.getElementById('yLabels');
@@ -342,4 +335,4 @@ function initCruzado() {
   matrix.innerHTML = h;
 }
 
-window.addEventListener('load', () => showSection('verde'));
+window.addEventListener('load', () => showSection('green'));

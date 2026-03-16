@@ -16,6 +16,7 @@
   --muted: #88a688; /* Softer muted text */
   --serif: 'Playfair Display', serif;
   --sans: 'DM Sans', sans-serif;
+  --title: 'Syne', sans-serif;
 }
 
 /* ... existing styles ... */
@@ -26,7 +27,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); min-
 
 .hero { position: relative; padding: 120px 60px 80px; border-bottom: 1px solid var(--border); overflow: hidden; background-image: radial-gradient(circle at 90% 10%, rgba(74, 222, 128, 0.08), transparent 50%); }
 .hero-label { font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--green1); margin-bottom: 24px; display: block; }
-.hero h1 { font-family: var(--serif); font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 900; line-height: 0.9; color: #fff; margin-bottom: 24px; }
+.hero h1 { font-family: var(--title); font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 800; line-height: 0.9; color: #fff; margin-bottom: 24px; text-transform: uppercase; }
 .hero h1 span { background: linear-gradient(to right, var(--green1), var(--accent)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 .hero-sub { font-size: 18px; color: var(--muted); max-width: 600px; line-height: 1.6; }
 .hero-stats { display: flex; gap: 48px; margin-top: 64px; flex-wrap: wrap; }

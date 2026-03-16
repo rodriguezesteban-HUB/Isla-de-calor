@@ -1,143 +1,143 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Milán Verde — Dashboard Ambiental Premium</title>
-    <meta name="description" content="Análisis exhaustivo del verde urbano, consumo energético y clima en Milán. Storytelling basado en datos reales.">
+    <title>Green Milan — Premium Environmental Dashboard</title>
+    <meta name="description" content="Comprehensive analysis of urban green, energy consumption, and climate in Milan. Data-driven storytelling.">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="hero">
-        <span class="hero-label">📍 Milán, Italia — Reporte de Sostenibilidad</span>
-        <h1>Milán <span>Verde</span><br>& Sostenible</h1>
-        <p class="hero-sub">Una ciudad que apostó por lo verde. Esta es la historia de cómo Milán transformó su tejido urbano, redujo su huella energética y aprendió a convivir con el calor.</p>
+        <span class="hero-label">📍 Milan, Italy — Sustainability Report</span>
+        <h1 class="main-title">Green <span>Milan</span><br>& Sustainable</h1>
+        <p class="hero-sub">A city that bet on green. This is the story of how Milan transformed its urban fabric, reduced its energy footprint, and learned to coexist with heat.</p>
         
         <div class="hero-stats">
-            <div class="hero-stat"><div class="val">18.9</div><div class="lbl">m² verde / hab.</div></div>
-            <div class="hero-stat"><div class="val">25.7M</div><div class="lbl">Total m² Verde</div></div>
-            <div class="hero-stat"><div class="val">4.3k</div><div class="lbl">Techos Verdes</div></div>
-            <div class="hero-stat"><div class="val">−26%</div><div class="lbl">Consumo Gas</div></div>
+            <div class="hero-stat"><div class="val">18.9</div><div class="lbl">sqm green / hab.</div></div>
+            <div class="hero-stat"><div class="val">25.7M</div><div class="lbl">Total sqm Green</div></div>
+            <div class="hero-stat"><div class="val">4.3k</div><div class="lbl">Green Roofs</div></div>
+            <div class="hero-stat"><div class="val">−26%</div><div class="lbl">Gas Consumption</div></div>
         </div>
     </header>
 
     <nav class="chapters">
-        <button class="chapter-btn active" onclick="showSection('verde')"><span class="chapter-num">1</span>Verde Urbano</button>
-        <button class="chapter-btn" onclick="showSection('consumo')"><span class="chapter-num">2</span>Recursos</button>
-        <button class="chapter-btn" onclick="showSection('clima')"><span class="chapter-num">3</span>Clima & Calor</button>
-        <button class="chapter-btn" onclick="showSection('techos')"><span class="chapter-num">4</span>Techos Verdes</button>
-        <button class="chapter-btn" onclick="showSection('metano')"><span class="chapter-num">5</span>Transición</button>
-        <button class="chapter-btn" onclick="showSection('cruzado')"><span class="chapter-num">6</span>Análisis Cruzado</button>
+        <button class="chapter-btn active" onclick="showSection('green')"><span class="chapter-num">1</span>Urban Green</button>
+        <button class="chapter-btn" onclick="showSection('consumption')"><span class="chapter-num">2</span>Resources</button>
+        <button class="chapter-btn" onclick="showSection('climate')"><span class="chapter-num">3</span>Climate & Heat</button>
+        <button class="chapter-btn" onclick="showSection('roofs')"><span class="chapter-num">4</span>Green Roofs</button>
+        <button class="chapter-btn" onclick="showSection('methane')"><span class="chapter-num">5</span>Transition</button>
+        <button class="chapter-btn" onclick="showSection('cross')"><span class="chapter-num">6</span>Cross-Analysis</button>
     </nav>
 
     <main>
-        <section id="sec-verde" class="section active fade-in">
+        <section id="sec-green" class="section active fade-in">
             <div class="section-intro">
-                <span class="insight-tag">Capítulo 1 de 6</span>
-                <h2>El <em>pulmón</em> que creció</h2>
-                <p>Durante más de una década, Milán ha cultivado su espacio verde con consistencia. Cada año, más metros cuadrados para cada habitante. Una apuesta silenciosa que hoy suma casi 26 millones de metros cuadrados.</p>
+                <span class="insight-tag">Chapter 1 of 6</span>
+                <h2>The <em>lung</em> that grew</h2>
+                <p>For more than a decade, Milan has consistently cultivated its green space. Each year, more square meters for each inhabitant. A silent bet that today totals almost 26 million square meters.</p>
             </div>
             <div class="card">
-                <div class="card-title">Evolución Total vs Per Cápita (2011-2023)</div>
-                <div class="chart-wrap-tall"><canvas id="chartVerdeDual"></canvas></div>
+                <div class="card-title">Total Evolution vs Per Capita (2011-2023)</div>
+                <div class="chart-wrap-tall"><canvas id="chartGreenDual"></canvas></div>
             </div>
         </section>
 
-        <section id="sec-consumo" class="section fade-in">
+        <section id="sec-consumption" class="section fade-in">
             <div class="section-intro">
-                <span class="insight-tag">Capítulo 2 de 6</span>
-                <h2>Consumir menos, <em>vivir igual</em></h2>
-                <p>Entre 2000 y 2011, Milán redujo drásticamente su consumo de gas y agua por habitante. La electricidad se mantuvo estable. El verde creció. La ciudad demostró que eficiencia y calidad de vida coexisten.</p>
+                <span class="insight-tag">Chapter 2 of 6</span>
+                <h2>Consume less, <em>live the same</em></h2>
+                <p>Between 2000 and 2011, Milan drastically reduced its gas and water consumption per inhabitant. Electricity remained stable. Green space grew. The city demonstrated that efficiency and quality of life coexist.</p>
             </div>
             <div class="filter-bar">
-                <label>Filtrar:</label>
-                <button class="filter-btn active" onclick="filterConsumo('all')">Todos</button>
-                <button class="filter-btn" onclick="filterConsumo('elec')">⚡ Elec</button>
-                <button class="filter-btn" onclick="filterConsumo('gas')">🔥 Gas</button>
-                <button class="filter-btn" onclick="filterConsumo('agua')">💧 Agua</button>
+                <label>Filter:</label>
+                <button class="filter-btn active" onclick="filterConsumption('all')">All</button>
+                <button class="filter-btn" onclick="filterConsumption('elec')">⚡ Elec</button>
+                <button class="filter-btn" onclick="filterConsumption('gas')">🔥 Gas</button>
+                <button class="filter-btn" onclick="filterConsumption('water')">💧 Water</button>
             </div>
             <div class="card">
-                <div class="chart-wrap-tall"><canvas id="chartConsumo"></canvas></div>
+                <div class="chart-wrap-tall"><canvas id="chartConsumption"></canvas></div>
                 <div class="card-unit" style="margin-top:20px; border-top: 1px solid var(--border); padding-top: 15px;">
-                    El <strong>gas metano</strong> fue el recurso con mayor transformación: −131 m³ por habitante en solo 11 años. Equivale a miles de toneladas de CO₂ menos emitidas. La ciudad empezó su descarbonización mucho antes de que fuera tendencia.
+                    <strong>Methane gas</strong> was the resource with the greatest transformation: −131 m³ per inhabitant in just 11 years. Equivalent to thousands of tons less CO₂ emitted. The city began its decarbonization long before it was a trend.
                 </div>
             </div>
         </section>
 
-        <section id="sec-clima" class="section fade-in">
+        <section id="sec-climate" class="section fade-in">
             <div class="section-intro">
-                <span class="insight-tag">Capítulo 3 de 6</span>
-                <h2>La isla de calor <em>no afecta igual</em></h2>
-                <p>Las 7 estaciones meteorológicas de Milán revelan una ciudad fragmentada por la temperatura. El centro acumula calor; la periferia sur siente el frío. Comprender esta brecha es la clave para actuar.</p>
+                <span class="insight-tag">Chapter 3 of 6</span>
+                <h2>The heat island <em>doesn't affect everyone equally</em></h2>
+                <p>Milan's 7 weather stations reveal a city fragmented by temperature. The center accumulates heat; the southern periphery feels the cold. Understanding this gap is the key to acting.</p>
             </div>
             <div class="grid-2">
                 <div class="card">
-                    <div class="card-title">Temp. Media por Estación</div>
+                    <div class="card-title">Avg. Temp per Station</div>
                     <div class="chart-wrap"><canvas id="chartTemp"></canvas></div>
                 </div>
                 <div class="card">
-                    <div class="card-title">Matriz de Indicadores Climáticos</div>
-                    <div id="heatmapClima"></div>
+                    <div class="card-title">Climate Indicators Matrix</div>
+                    <div id="heatmapClimate"></div>
                 </div>
             </div>
         </section>
 
-        <section id="sec-techos" class="section fade-in">
+        <section id="sec-roofs" class="section fade-in">
             <div class="section-intro">
-                <span class="insight-tag">Capítulo 4 de 6</span>
-                <h2>4.396 techos <em>que respiran</em></h2>
-                <p>Milán ha equipado miles de edificios con vegetación en sus cubiertas. Una red verde invisible que combate la isla de calor desde arriba. El 89% son residenciales, pero los hospitales y servicios públicos tienen los sistemas más densos.</p>
+                <span class="insight-tag">Chapter 4 of 6</span>
+                <h2>4,396 roofs <em>that breathe</em></h2>
+                <p>Milan has equipped thousands of buildings with vegetation on their roofs. An invisible green network that fights the heat island from above. 89% are residential, but hospitals and public services have the densest systems.</p>
             </div>
             <div class="grid-3">
-                <div class="card"><div class="card-title">Edificios</div><div class="card-value" id="techoTotal">4,396</div></div>
-                <div class="card"><div class="card-title">Área Prom.</div><div class="card-value" id="techoArea">420</div><div class="card-unit">m²</div></div>
-                <div class="card"><div class="card-title">Vol. Vegetal</div><div class="card-value" id="techoVol">24.5</div></div>
+                <div class="card"><div class="card-title">Buildings</div><div class="card-value" id="roofTotal">4,396</div></div>
+                <div class="card"><div class="card-title">Avg. Area</div><div class="card-value" id="roofArea">420</div><div class="card-unit">sqm</div></div>
+                <div class="card"><div class="card-title">Plant Vol.</div><div class="card-value" id="roofVol">24.5</div></div>
             </div>
             <div class="card" style="margin-top:24px">
-                <div class="chart-wrap"><canvas id="chartTechoTipo"></canvas></div>
+                <div class="chart-wrap"><canvas id="chartRoofType"></canvas></div>
                 <div class="card-unit" style="margin-top:20px; border-top: 1px solid var(--border); padding-top: 15px;">
-                    Los <strong>Servicios públicos e Instalaciones hospitalarias</strong> lideran en área promedio por techo. Esto no es casualidad: son los edificios que más calor generan y donde la reducción de temperatura tiene mayor impacto en el bienestar humano.
+                    <strong>Public Services and Hospital Facilities</strong> lead in average roof area. This is no coincidence: they are the buildings that generate the most heat and where temperature reduction has the greatest impact on human well-being.
                 </div>
             </div>
         </section>
 
-        <section id="sec-metano" class="section fade-in">
+        <section id="sec-methane" class="section fade-in">
             <div class="section-intro">
-                <span class="insight-tag">Capítulo 5 de 6</span>
-                <h2>366 zonas que <em>dijeron adiós al gas</em></h2>
-                <p>366 direcciones en Milán ya no dependen del gas metano. La distribución no es aleatoria: se concentra en los bordes periurbanos y parques naturales, revelando un patrón de transición energética que avanza desde afuera hacia adentro.</p>
+                <span class="insight-tag">Chapter 5 of 6</span>
+                <h2>366 zones that <em>said goodbye to gas</em></h2>
+                <p>366 addresses in Milan no longer depend on methane gas. The distribution is not random: it is concentrated in peri-urban edges and natural parks, revealing a pattern of energy transition that moves from the outside in.</p>
             </div>
             <div class="grid-2">
                 <div class="card">
-                    <div class="card-title">Distribución por Municipio (Mapa)</div>
-                    <div class="chart-wrap-tall"><canvas id="chartMetanoGeo"></canvas></div>
+                    <div class="card-title">Distribution by Municipality (Map)</div>
+                    <div class="chart-wrap-tall"><canvas id="chartMethaneGeo"></canvas></div>
                 </div>
                 <div class="card">
-                    <div class="card-title">Densidad Espacial (Áreas Críticas)</div>
-                    <div class="chart-wrap-tall"><canvas id="chartMetanoDensity"></canvas></div>
+                    <div class="card-title">Spatial Density (Critical Areas)</div>
+                    <div class="chart-wrap-tall"><canvas id="chartMethaneDensity"></canvas></div>
                 </div>
                 <div class="card">
-                    <div class="card-title">Ranking: Zonas sin gas por Barrio</div>
-                    <div class="chart-wrap"><canvas id="chartMetanoMunicipio"></canvas></div>
+                    <div class="card-title">Ranking: Gas-free zones by Neighborhood</div>
+                    <div class="chart-wrap"><canvas id="chartMethaneDistrict"></canvas></div>
                 </div>
                 <div class="card">
-                    <div class="card-title">Zonas sin Gas Metano por Distrito</div>
-                    <div class="chart-wrap"><canvas id="chartMetanoRank"></canvas></div>
+                    <div class="card-title">Methane Gas-free Zones by District</div>
+                    <div class="chart-wrap"><canvas id="chartMethaneRank"></canvas></div>
                 </div>
             </div>
         </section>
 
-        <section id="sec-cruzado" class="section fade-in">
+        <section id="sec-cross" class="section fade-in">
             <div class="section-intro">
-                <span class="insight-tag">Capítulo 6 de 6</span>
-                <h2>Todo <em>conectado</em></h2>
-                <p>Verde urbano, consumo de recursos, islas de calor, techos vegetados y zonas sin gas no son historias separadas. Son capítulos del mismo libro. Este análisis cruzado muestra cómo se relacionan.</p>
+                <span class="insight-tag">Chapter 6 of 6</span>
+                <h2>Everything <em>connected</em></h2>
+                <p>Urban green, resource consumption, heat islands, vegetated roofs, and gas-free zones are not separate stories. They are chapters of the same book. This cross-analysis shows how they relate.</p>
             </div>
             <div class="card">
-                <div class="card-title">Matriz de Correlación (Pearson)</div>
+                <div class="card-title">Correlation Matrix (Pearson)</div>
                 <div class="matrix-container" style="display: flex;">
                     <div id="yLabels" style="display: flex; flex-direction: column; justify-content: space-around; padding-right: 15px; font-size: 11px; color: var(--muted); text-align: right;"></div>
                     <div style="flex: 1;">
@@ -146,24 +146,24 @@
                     </div>
                 </div>
                 <div class="card-unit" style="margin-top:20px; border-top: 1px solid var(--border); padding-top: 15px;">
-                    Valores próximos a <strong>1.0</strong> indican correlación fuerte positiva (ej. Temp vs Calor).
+                    Values close to <strong>1.0</strong> indicate a strong positive correlation (e.g., Temp vs Heat).
                 </div>
             </div>
             
             <div class="grid-2" style="margin-top:32px">
                 <div class="card" style="border-color:var(--green1); background: rgba(74, 222, 128, 0.03);">
-                    <div class="card-title" style="color:var(--green1)">Conclusión del Story</div>
+                    <div class="card-title" style="color:var(--green1)">Story Conclusion</div>
                     <div class="card-unit" style="color:var(--text); font-size: 16px; font-weight: 500;">
-                        Milán demuestra que las ciudades pueden transformarse sin sacrificar calidad de vida. <br><br>
-                        <strong>Más verde → menos calor → menos gas → menos emisiones.</strong> <br><br>
-                        El ciclo virtuoso existe. Los datos lo confirman.
+                        Milan demonstrates that cities can transform without sacrificing quality of life. <br><br>
+                        <strong>More green → less heat → less gas → lower emissions.</strong> <br><br>
+                        The virtuous cycle exists. The data confirms it.
                     </div>
                 </div>
                 <div class="card" style="border-color:var(--red); display: flex; align-items: center; justify-content: center;">
                     <div style="text-align: center;">
-                        <div class="card-title" style="color:var(--red)">Punto Crítico</div>
+                        <div class="card-title" style="color:var(--red)">Critical Point</div>
                         <div class="card-value">38.2°C</div>
-                        <div class="card-unit">Máxima histórica registrada en el Centro</div>
+                        <div class="card-unit">Historical maximum recorded in the Center</div>
                     </div>
                 </div>
             </div>
@@ -171,7 +171,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 PROYECTO MILÁN VERDE — RESILIENCIA URBANA</p>
+        <p>&copy; 2024 GREEN MILAN PROJECT — URBAN RESILIENCE</p>
     </footer>
 
     <script src="script.js"></script>
