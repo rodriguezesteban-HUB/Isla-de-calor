@@ -10,165 +10,183 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header class="hero">
-        <span class="hero-label">📍 Milan, Italy — Sustainability Report</span>
-        <h1 class="main-title">Urban Morphology and <span>Surface Urban Heat Island</span> Intensity in Milan: A Case Study</h1>
-        <p class="hero-sub">A city that bet on green. This is the story of how Milan transformed its urban fabric, reduced its energy footprint, and learned to coexist with heat.</p>
-        
-        <div class="hero-stats">
-            <div class="hero-stat"><div class="val">18.9</div><div class="lbl">sqm green / hab.</div></div>
-            <div class="hero-stat"><div class="val">25.7M</div><div class="lbl">Total sqm Green</div></div>
-            <div class="hero-stat"><div class="val">4.3k</div><div class="lbl">Green Roofs</div></div>
-            <div class="hero-stat"><div class="val">−26%</div><div class="lbl">Gas Consumption</div></div>
-        </div>
-    </header>
-
-    <nav class="chapters">
-        <button class="chapter-btn active" onclick="showSection('green')">Urban Green</button>
-        <button class="chapter-btn" onclick="showSection('consumption')">Resources</button>
-        <button class="chapter-btn" onclick="showSection('climate')">Climate & Heat</button>
-        <button class="chapter-btn" onclick="showSection('roofs')">Green Roofs</button>
-        <button class="chapter-btn" onclick="showSection('methane')">Transition</button>
-        <button class="chapter-btn" onclick="showSection('cross')">Cross-Analysis</button>
+    <nav class="top-nav">
+        <button class="view-btn active" onclick="showView('dashboard')">Analysis</button>
+        <button class="view-btn" onclick="showView('results')">Results</button>
     </nav>
 
-    <main>
-        <section id="sec-green" class="section active fade-in">
-            <div class="section-intro">
-                <span class="insight-tag">Chapter 1 of 6</span>
-                <h2>The <em>lung</em> that grew</h2>
-                <p>For more than a decade, Milan has consistently cultivated its green space. Each year, more square meters for each inhabitant. A silent bet that today totals almost 26 million square meters.</p>
-            </div>
-            <div class="card">
-                <div class="card-title">Total Evolution vs Per Capita (2011-2023)</div>
-                <div class="chart-wrap-tall"><canvas id="chartGreenDual"></canvas></div>
-            </div>
-        </section>
-
-        <section id="sec-consumption" class="section fade-in">
-            <div class="section-intro">
-                <span class="insight-tag">Chapter 2 of 6</span>
-                <h2>Consume less, <em>live the same</em></h2>
-                <p>Between 2000 and 2011, Milan drastically reduced its gas and water consumption per inhabitant. Electricity remained stable. Green space grew. The city demonstrated that efficiency and quality of life coexist.</p>
-            </div>
-            <div class="filter-bar">
-                <label>Filter:</label>
-                <button class="filter-btn active" onclick="filterConsumption('all')">All</button>
-                <button class="filter-btn" onclick="filterConsumption('elec')">⚡ Elec</button>
-                <button class="filter-btn" onclick="filterConsumption('gas')">🔥 Gas</button>
-                <button class="filter-btn" onclick="filterConsumption('water')">💧 Water</button>
-            </div>
-            <div class="card">
-                <div class="chart-wrap-tall"><canvas id="chartConsumption"></canvas></div>
-                <div class="card-unit" style="margin-top:20px; border-top: 1px solid var(--border); padding-top: 15px;">
-                    <strong>Methane gas</strong> was the resource with the greatest transformation: −131 m³ per inhabitant in just 11 years. Equivalent to thousands of tons less CO₂ emitted. The city began its decarbonization long before it was a trend.
-                </div>
-            </div>
-        </section>
-
-        <section id="sec-climate" class="section fade-in">
-            <div class="section-intro">
-                <span class="insight-tag">Chapter 3 of 6</span>
-                <h2>The heat island <em>doesn't affect everyone equally</em></h2>
-                <p>Milan's 7 weather stations reveal a city fragmented by temperature. The center accumulates heat; the southern periphery feels the cold. Understanding this gap is the key to acting.</p>
-            </div>
-            <div class="grid-2">
-                <div class="card">
-                    <div class="card-title">Avg. Temp per Station</div>
-                    <div class="chart-wrap"><canvas id="chartTemp"></canvas></div>
-                </div>
-                <div class="card">
-                    <div class="card-title">Climate Indicators Matrix</div>
-                    <div id="heatmapClimate"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="sec-roofs" class="section fade-in">
-            <div class="section-intro">
-                <span class="insight-tag">Chapter 4 of 6</span>
-                <h2>4,396 roofs <em>that breathe</em></h2>
-                <p>Milan has equipped thousands of buildings with vegetation on their roofs. An invisible green network that fights the heat island from above. 89% are residential, but hospitals and public services have the densest systems.</p>
-            </div>
-            <div class="grid-3">
-                <div class="card"><div class="card-title">Buildings</div><div class="card-value" id="roofTotal">4,396</div></div>
-                <div class="card"><div class="card-title">Avg. Area</div><div class="card-value" id="roofArea">420</div><div class="card-unit">sqm</div></div>
-                <div class="card"><div class="card-title">Plant Vol.</div><div class="card-value" id="roofVol">24.5</div></div>
-            </div>
-            <div class="card" style="margin-top:24px">
-                <div class="chart-wrap"><canvas id="chartRoofType"></canvas></div>
-                <div class="card-unit" style="margin-top:20px; border-top: 1px solid var(--border); padding-top: 15px;">
-                    <strong>Public Services and Hospital Facilities</strong> lead in average roof area. This is no coincidence: they are the buildings that generate the most heat and where temperature reduction has the greatest impact on human well-being.
-                </div>
-            </div>
-        </section>
-
-        <section id="sec-methane" class="section fade-in">
-            <div class="section-intro">
-                <span class="insight-tag">Chapter 5 of 6</span>
-                <h2>Spatial Pattern of <em>Gas Phase-Out</em></h2>
-                <p>366 addresses in Milan no longer depend on methane gas. The distribution is not random: it is concentrated in peri-urban edges and natural parks, revealing a pattern of energy transition that moves from the outside in.</p>
-            </div>
-            <div class="grid-2">
-                <div class="card">
-                    <div class="card-title">Distribution by Municipality (Map)</div>
-                    <div class="chart-wrap-tall map-overlay"><canvas id="chartMethaneGeo"></canvas></div>
-                </div>
-                <div class="card">
-                    <div class="card-title">Spatial Density (Critical Areas)</div>
-                    <div class="chart-wrap-tall map-overlay"><canvas id="chartMethaneDensity"></canvas></div>
-                </div>
-                <div class="card">
-                    <div class="card-title">Ranking: Gas-free zones by Neighborhood</div>
-                    <div class="chart-wrap"><canvas id="chartMethaneDistrict"></canvas></div>
-                </div>
-                <div class="card">
-                    <div class="card-title">Methane Gas-free Zones by District</div>
-                    <div class="chart-wrap"><canvas id="chartMethaneRank"></canvas></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="sec-cross" class="section fade-in">
-            <div class="section-intro">
-                <span class="insight-tag">Chapter 6 of 6</span>
-                <h2>Everything <em>connected</em></h2>
-                <p>Urban green, resource consumption, heat islands, vegetated roofs, and gas-free zones are not separate stories. They are chapters of the same book. This cross-analysis shows how they relate.</p>
-            </div>
-            <div class="card">
-                <div class="card-title">Correlation Matrix (Pearson)</div>
-                <div class="matrix-container" style="display: flex;">
-                    <div id="yLabels" style="display: flex; flex-direction: column; justify-content: space-around; padding-right: 15px; font-size: 11px; color: var(--muted); text-align: right;"></div>
-                    <div style="flex: 1;">
-                        <div id="xLabels" style="display: flex; justify-content: space-around; margin-bottom: 10px; font-size: 11px; color: var(--muted); text-align: center;"></div>
-                        <div id="correlationMatrix" class="corr-grid"></div>
-                    </div>
-                </div>
-                <div class="card-unit" style="margin-top:20px; border-top: 1px solid var(--border); padding-top: 15px;">
-                    Values close to <strong>1.0</strong> indicate a strong positive correlation (e.g., Temp vs Heat).
-                </div>
-            </div>
+    <div id="view-dashboard" class="view-container active">
+        <header class="hero">
+            <span class="hero-label">📍 Milan, Italy — Sustainability Report</span>
+            <h1 class="main-title">Urban Morphology and <span>Surface Urban Heat Island</span> Intensity in Milan: A Case Study</h1>
+            <p class="hero-sub">A city that bet on green. This is the story of how Milan transformed its urban fabric, reduced its energy footprint, and learned to coexist with heat.</p>
             
-            <div class="grid-2" style="margin-top:32px">
-                <div class="card" style="border-color:var(--green1); background: rgba(74, 222, 128, 0.03);">
-                    <div class="card-title" style="color:var(--green1)">Story Conclusion</div>
-                    <div class="card-unit" style="color:var(--text); font-size: 16px; font-weight: 500;">
-                        Milan demonstrates that cities can transform without sacrificing quality of life. <br><br>
-                        <strong>More green → less heat → less gas → lower emissions.</strong> <br><br>
-                        The virtuous cycle exists. The data confirms it.
-                    </div>
-                </div>
-                <div class="card" style="border-color:var(--red); display: flex; align-items: center; justify-content: center;">
-                    <div style="text-align: center;">
-                        <div class="card-title" style="color:var(--red)">Critical Point</div>
-                        <div class="card-value">38.2°C</div>
-                        <div class="card-unit">Historical maximum recorded in the Center</div>
-                    </div>
-                </div>
+            <div class="hero-stats">
+                <div class="hero-stat"><div class="val">18.9</div><div class="lbl">sqm green / hab.</div></div>
+                <div class="hero-stat"><div class="val">25.7M</div><div class="lbl">Total sqm Green</div></div>
+                <div class="hero-stat"><div class="val">4.3k</div><div class="lbl">Green Roofs</div></div>
+                <div class="hero-stat"><div class="val">−26%</div><div class="lbl">Gas Consumption</div></div>
             </div>
-        </section>
-    </main>
+        </header>
+
+        <nav class="chapters">
+            <button class="chapter-btn active" onclick="showSection('green')">Urban Green</button>
+            <button class="chapter-btn" onclick="showSection('consumption')">Resources</button>
+            <button class="chapter-btn" onclick="showSection('climate')">Climate & Heat</button>
+            <button class="chapter-btn" onclick="showSection('roofs')">Green Roofs</button>
+            <button class="chapter-btn" onclick="showSection('methane')">Transition</button>
+            <button class="chapter-btn" onclick="showSection('cross')">Cross-Analysis</button>
+        </nav>
+
+        <main>
+            <section id="sec-green" class="section active fade-in">
+                <div class="section-intro">
+                    <span class="insight-tag">Chapter 1 of 6</span>
+                    <h2>The <em>lung</em> that grew</h2>
+                    <p>For more than a decade, Milan has consistently cultivated its green space. Each year, more square meters for each inhabitant. A silent bet that today totals almost 26 million square meters.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Total Evolution vs Per Capita (2011-2023)</div>
+                    <div class="chart-wrap-tall"><canvas id="chartGreenDual"></canvas></div>
+                </div>
+            </section>
+
+            <section id="sec-consumption" class="section fade-in">
+                <div class="section-intro">
+                    <span class="insight-tag">Chapter 2 of 6</span>
+                    <h2>Consume less, <em>live the same</em></h2>
+                    <p>Between 2000 and 2011, Milan drastically reduced its gas and water consumption per inhabitant. Electricity remained stable. Green space grew. The city demonstrated that efficiency and quality of life coexist.</p>
+                </div>
+                <div class="filter-bar">
+                    <label>Filter:</label>
+                    <button class="filter-btn active" onclick="filterConsumption('all')">All</button>
+                    <button class="filter-btn" onclick="filterConsumption('elec')">⚡ Elec</button>
+                    <button class="filter-btn" onclick="filterConsumption('gas')">🔥 Gas</button>
+                    <button class="filter-btn" onclick="filterConsumption('water')">💧 Water</button>
+                </div>
+                <div class="card">
+                    <div class="chart-wrap-tall"><canvas id="chartConsumption"></canvas></div>
+                    <div class="card-unit" style="margin-top:20px; border-top: 1px solid var(--border); padding-top: 15px;">
+                        <strong>Methane gas</strong> was the resource with the greatest transformation: −131 m³ per inhabitant in just 11 years. Equivalent to thousands of tons less CO₂ emitted. The city began its decarbonization long before it was a trend.
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-climate" class="section fade-in">
+                <div class="section-intro">
+                    <span class="insight-tag">Chapter 3 of 6</span>
+                    <h2>The heat island <em>doesn't affect everyone equally</em></h2>
+                    <p>Milan's 7 weather stations reveal a city fragmented by temperature. The center accumulates heat; the southern periphery feels the cold. Understanding this gap is the key to acting.</p>
+                </div>
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-title">Avg. Temp per Station</div>
+                        <div class="chart-wrap"><canvas id="chartTemp"></canvas></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Climate Indicators Matrix</div>
+                        <div id="heatmapClimate"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-roofs" class="section fade-in">
+                <div class="section-intro">
+                    <span class="insight-tag">Chapter 4 of 6</span>
+                    <h2>4,396 roofs <em>that breathe</em></h2>
+                    <p>Milan has equipped thousands of buildings with vegetation on their roofs. An invisible green network that fights the heat island from above. 89% are residential, but hospitals and public services have the densest systems.</p>
+                </div>
+                <div class="grid-3">
+                    <div class="card"><div class="card-title">Buildings</div><div class="card-value" id="roofTotal">4,396</div></div>
+                    <div class="card"><div class="card-title">Avg. Area</div><div class="card-value" id="roofArea">420</div><div class="card-unit">sqm</div></div>
+                    <div class="card"><div class="card-title">Plant Vol.</div><div class="card-value" id="roofVol">24.5</div></div>
+                </div>
+                <div class="card" style="margin-top:24px">
+                    <div class="chart-wrap"><canvas id="chartRoofType"></canvas></div>
+                    <div class="card-unit" style="margin-top:20px; border-top: 1px solid var(--border); padding-top: 15px;">
+                        <strong>Public Services and Hospital Facilities</strong> lead in average roof area. This is no coincidence: they are the buildings that generate the most heat and where temperature reduction has the greatest impact on human well-being.
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-methane" class="section fade-in">
+                <div class="section-intro">
+                    <span class="insight-tag">Chapter 5 of 6</span>
+                    <h2>Spatial Pattern of <em>Gas Phase-Out</em></h2>
+                    <p>366 addresses in Milan no longer depend on methane gas. The distribution is not random: it is concentrated in peri-urban edges and natural parks, revealing a pattern of energy transition that moves from the outside in.</p>
+                </div>
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-title">Distribution by Municipality (Map)</div>
+                        <div class="chart-wrap-tall map-overlay"><canvas id="chartMethaneGeo"></canvas></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Spatial Density (Critical Areas)</div>
+                        <div class="chart-wrap-tall map-overlay"><canvas id="chartMethaneDensity"></canvas></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Ranking: Gas-free zones by Neighborhood</div>
+                        <div class="chart-wrap"><canvas id="chartMethaneDistrict"></canvas></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Methane Gas-free Zones by District</div>
+                        <div class="chart-wrap"><canvas id="chartMethaneRank"></canvas></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-cross" class="section fade-in">
+                <div class="section-intro">
+                    <span class="insight-tag">Chapter 6 of 6</span>
+                    <h2>Everything <em>connected</em></h2>
+                    <p>Urban green, resource consumption, heat islands, vegetated roofs, and gas-free zones are not separate stories. They are chapters of the same book. This cross-analysis shows how they relate.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Correlation Matrix (Pearson)</div>
+                    <div class="matrix-container" style="display: flex;">
+                        <div id="yLabels" style="display: flex; flex-direction: column; justify-content: space-around; padding-right: 15px; font-size: 11px; color: var(--muted); text-align: right;"></div>
+                        <div style="flex: 1;">
+                            <div id="xLabels" style="display: flex; justify-content: space-around; margin-bottom: 10px; font-size: 11px; color: var(--muted); text-align: center;"></div>
+                            <div id="correlationMatrix" class="corr-grid"></div>
+                        </div>
+                    </div>
+                    <div class="card-unit" style="margin-top:20px; border-top: 1px solid var(--border); padding-top: 15px;">
+                        Values close to <strong>1.0</strong> indicate a strong positive correlation (e.g., Temp vs Heat).
+                    </div>
+                </div>
+                
+                <div class="grid-2" style="margin-top:32px">
+                    <div class="card" style="border-color:var(--green1); background: rgba(74, 222, 128, 0.03);">
+                        <div class="card-title" style="color:var(--green1)">Story Conclusion</div>
+                        <div class="card-unit" style="color:var(--text); font-size: 16px; font-weight: 500;">
+                            Milan demonstrates that cities can transform without sacrificing quality of life. <br><br>
+                            <strong>More green → less heat → less gas → lower emissions.</strong> <br><br>
+                            The virtuous cycle exists. The data confirms it.
+                        </div>
+                    </div>
+                    <div class="card" style="border-color:var(--red); display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center;">
+                            <div class="card-title" style="color:var(--red)">Critical Point</div>
+                            <div class="card-value">38.2°C</div>
+                            <div class="card-unit">Historical maximum recorded in the Center</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="view-results" class="view-container">
+        <div class="section-intro">
+            <span class="insight-tag">New Section</span>
+            <h2>Scientific <em>Results</em> & Conclusions</h2>
+            <p>This space is reserved for a detailed summary of findings, metric tables, and advanced conclusions about the Urban Heat Island intensity in Milan.</p>
+        </div>
+        <div class="card" style="max-width: 600px; margin-top: 40px;">
+            <div class="card-title">Pending Data</div>
+            <p style="color:var(--muted)">Content for the results section will be populated based on the analyzed datasets.</p>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2024 GREEN MILAN PROJECT — URBAN RESILIENCE</p>

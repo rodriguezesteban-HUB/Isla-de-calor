@@ -156,6 +156,17 @@ function renderMapBackground() {
   });
 }
 
+function showView(id) {
+  document.querySelectorAll('.view-container').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+  
+  const view = document.getElementById('view-' + id);
+  if (view) view.classList.add('active');
+  
+  const btn = document.querySelector(`[onclick="showView('${id}')"]`);
+  if (btn) btn.classList.add('active');
+}
+
 function showSection(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.chapter-btn').forEach(b => b.classList.remove('active'));
