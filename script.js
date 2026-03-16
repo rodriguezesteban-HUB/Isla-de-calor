@@ -62,6 +62,19 @@ async function loadMilanGeoJSON() {
     const response = await fetch('milan_districts_simple.geojson');
     milanGeoData = await response.json();
     console.log("GeoJSON loaded successfully");
+    
+    // Compute centroids for nearest fallback
+    milanGeoData.features.forEach(f => {
+      let sumX = 0, sumY = 0, count = 0;
+      const coords = f.geometry.coordinates;
+      const rings = f.geometry.type === 'Polygon' ? [coords] : coords;
+      rings.forEach(poly => {
+        const ring = Array.isArray(poly[0][0]) ? poly[0] : poly;
+        ring.forEach(p => { sumX += p[0]; sumY += p[1]; count++; });
+      });
+      f.centroid = [sumX / count, sumY / count];
+    });
+
     renderMapBackground();
   } catch (err) {
     console.error("Error loading GeoJSON", err);
@@ -70,9 +83,14 @@ async function loadMilanGeoJSON() {
 
 function getNeighborhood(x, y) {
   if (!milanGeoData) return null;
+  let bestDist = Infinity;
+  let nearestName = "Milan District";
+
   for (const feature of milanGeoData.features) {
+    // Exact match
     const coords = feature.geometry.coordinates;
     const rings = feature.geometry.type === 'Polygon' ? [coords] : coords;
+    let foundInside = false;
     for (const poly of rings) {
       const ring = Array.isArray(poly[0][0]) ? poly[0] : poly;
       let inside = false;
@@ -81,10 +99,22 @@ function getNeighborhood(x, y) {
         let xj = ring[j][0], yj = ring[j][1];
         if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) inside = !inside;
       }
-      if (inside) return feature.properties.NIL;
+      if (inside) foundInside = true;
+    }
+    if (foundInside) return feature.properties.NIL;
+
+    // Calc distance to centroid as fallback
+    if (feature.centroid) {
+      const dx = x - feature.centroid[0];
+      const dy = y - feature.centroid[1];
+      const dist = dx*dx + dy*dy;
+      if (dist < bestDist) {
+        bestDist = dist;
+        nearestName = feature.properties.NIL;
+      }
     }
   }
-  return null;
+  return nearestName;
 }
 
 function renderMapBackground() {
